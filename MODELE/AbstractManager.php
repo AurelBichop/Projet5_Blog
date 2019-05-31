@@ -2,7 +2,6 @@
 
 require_once 'config/config.php';
 
-
 abstract class AbstractManager
 
 {

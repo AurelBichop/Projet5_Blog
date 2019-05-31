@@ -1,27 +1,20 @@
 <?php
 session_start();
 
+require_once 'debug/Debug.php';
+
+require_once 'tools/Utils.php';
+require_once 'tools/BilletException.php';
+require_once 'tools/LoginException.php';
+require_once 'tools/Autoloader.php';
+
+
 /**
- * Autoloader
- * @param $class_name
+ * Chargement de l'autoloader
  */
+$autoload = new Autoloader();
+$autoload->register();
 
-function load($class_name){
-
-    if(strstr($class_name,'Controleur')){
-        require_once 'CONTROLLER/'.$class_name.'.php';
-
-    }elseif (strstr($class_name,'Vue')){
-        require_once 'VIEW/'.$class_name.'.php';
-    }
-    else{
-        require_once 'MODELE/'.$class_name.'.php';
-    }
-}
-
-spl_autoload_register('load');
-
-/***********************************************/
 
 
 /************************************

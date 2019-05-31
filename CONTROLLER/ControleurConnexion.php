@@ -1,10 +1,4 @@
 <?php
-require_once 'config/config.php';
-require_once 'tools/Utils.php';
-require_once 'MODELE/ManagerBillet.php';
-require_once 'MODELE/Billet.php';
-require_once 'VIEW/Vue.php';
-require_once 'debug/Debug.php';
 
 class ControleurConnexion
 

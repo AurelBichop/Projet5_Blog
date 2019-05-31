@@ -1,7 +1,5 @@
 <?php
 
-require_once 'AbstractManager.php';
-
 
 class ManagerCommentaire extends AbstractManager
 {

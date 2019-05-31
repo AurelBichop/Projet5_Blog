@@ -1,10 +1,5 @@
 <?php
 
-require_once 'AbstractManager.php';
-
-
-
-
 class ManagerMembre extends AbstractManager
 {
 

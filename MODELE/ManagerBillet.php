@@ -4,9 +4,6 @@
  *
  */
 
-require_once 'AbstractManager.php';
-
-
 
 class ManagerBillet extends AbstractManager
 {

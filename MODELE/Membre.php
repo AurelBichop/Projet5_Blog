@@ -1,7 +1,5 @@
 <?php
 
- require_once 'Hydrate.php';
- require_once 'tools/LoginException.php';
 
  class Membre
  {
