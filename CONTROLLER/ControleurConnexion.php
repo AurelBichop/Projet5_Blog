@@ -1,0 +1,98 @@
+<?php
+require_once 'config/config.php';
+require_once 'tools/Utils.php';
+require_once 'MODELE/ManagerBillet.php';
+require_once 'MODELE/Billet.php';
+require_once 'VIEW/Vue.php';
+require_once 'debug/Debug.php';
+
+class ControleurConnexion
+
+{
+
+    public function affichePageConnexion()
+    {
+
+        /******************************
+         * Création de la Vue en Objet
+         ******************************/
+
+        $vue = new Vue('connexion', 'Connexion');
+
+        $vue->generer(array('details'=>'Voir détails &raquo;'));
+
+    }
+
+    public function testConnexion(){
+
+        if (!empty($_POST['login']) && (!empty($_POST['password']))) {
+            $this->connexion($_POST['login'], $_POST['password']);
+
+        }elseif(!empty($_POST['login'])||(!empty($_POST['password']))){
+
+            throw new LoginException();
+        }else
+        {
+            throw new LoginException();
+        }
+    }
+
+
+
+     /**
+     * Permet la connection apres vérification
+     *
+     * @param $dataNom
+     * @param $dataPass
+     *
+     */
+
+    public function connexion($dataLogin, $dataPass){
+
+        $managerMembre = new ManagerMembre();
+
+        //vérifie si le membre existe
+        if ($OneMembre = $managerMembre->getOneMembre($dataLogin)){
+
+            //vérifie le mot de passe du membre
+            if ($this->verifOneMembre($OneMembre, $dataPass)){
+
+                $_SESSION['connecte'] = 1;
+                $_SESSION['id'] = $OneMembre->getId();
+                $_SESSION['administrateur'] = $OneMembre->getIsadministrateur();
+                $_SESSION['nom'] = $OneMembre->getNom();
+                $_SESSION['prenom'] = $OneMembre->getPrenom();
+                $_SESSION['email'] = $OneMembre->getCourriel();
+
+                // Renvoie sur la page d'accueil
+                $controlleurBillet = new ControleurBillet();
+                $controlleurBillet->afficheListeBillet();
+
+            }else{
+                throw new LoginException();
+            }
+        }
+    }
+
+    public function deconnexion()
+    {
+        session_destroy();
+        $_SESSION = [];
+        
+        // Renvoie sur la page d'accueil
+        $controlleurBillet = new ControleurBillet();
+        $controlleurBillet->afficheListeBillet();
+    }
+
+    public function verifOneMembre($member, $password){
+
+        $connexion = false;
+            if (password_verify($password, $member->getPassword()))
+            {
+                $connexion = true;
+            }
+        return $connexion;
+    }
+
+
+}
