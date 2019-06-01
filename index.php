@@ -45,7 +45,7 @@ try {
                 break;
 
 
-            case 'listebillet':
+            case 'listebillets':
                 $controlleurListBillet = new ControleurBillet();
                 $controlleurListBillet->afficheBilletPagination();
                 break;

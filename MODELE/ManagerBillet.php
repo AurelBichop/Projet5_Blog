@@ -15,7 +15,7 @@ class ManagerBillet extends AbstractManager
      */
 
     public function getBillets(int $debut = null, int $fin = null)
-{
+    {
 
     $sql = null;
 
@@ -30,7 +30,6 @@ class ManagerBillet extends AbstractManager
         $sql = "SELECT id, id_membre, chapeau, contenu, date FROM billet ORDER BY billet.id DESC limit $debut, $fin";
     }
 
-    //$sql = "SELECT id, id_membre, chapeau, contenu, date FROM billet ORDER BY billet.id DESC limit $debut, $fin";
     $reponse = $this->executerRequete($sql);
 
     while ($donnees = $reponse->fetch())
@@ -40,11 +39,12 @@ class ManagerBillet extends AbstractManager
 
     return $objetBillet;
 
-}
+    }
+
 
     /**
      * @return Billet
-     *
+     * @throws BilletException
      */
 
     public function getLastBillets()

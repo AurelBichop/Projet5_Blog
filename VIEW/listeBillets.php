@@ -25,3 +25,15 @@
 </div>
 </div>
 <?php endforeach; ?>
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto mb-5">
+        <?php for($i = 1;$i<=$pages;$i++): ?>
+
+            <a class="btn btn-primary" href="<?php echo './?action=listebillets&page='.$i; ?>">Page <?php echo $i; ?> </a>
+
+        <?php endfor; ?>
+        </div>
+    </div>
+
+

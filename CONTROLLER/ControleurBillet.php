@@ -46,11 +46,13 @@ class ControleurBillet
 
         $allBillets = $managerBillet->billetPagination($this->pageActuelle($nombreBillets),$nombreBillets);
 
+        $nbDePage = ceil($managerBillet->nbBillets()/$nombreBillets);
 
-        $vue = new Vue('listeBillet', 'Billets');
+        $vue = new Vue('listeBillets', 'Billets');
 
         $vue->generer(array(
-            'listeBillets' => $allBillets
+            'listeBillets' => $allBillets,
+            'pages'=>$nbDePage
         ));
 
     }
