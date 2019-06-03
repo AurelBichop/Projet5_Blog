@@ -7,17 +7,15 @@
         <div class="container">
             <h1 class="display-3"><strong><?php echo htmlspecialchars($oneBillet->getChapeau()); ?></strong></h1>
 <p>
-    <time>Date :
+    <em>Date :
 
         <?php
 
-        $date = new DateTime($oneBillet->getDate());
-
-        echo $date->format('d-m-Y à H:i').' par '. ucfirst($oneBillet->getNomMembre()).' '.ucfirst($oneBillet->getPreNomMembre());
+        echo $oneBillet->getDate().' par '. ucfirst($oneBillet->getNomMembre()).' '.ucfirst($oneBillet->getPreNomMembre());
 
         ?>
 
-    </time>
+    </em>
 </p>
 <p>
     <?php echo Utils::Lireplus(htmlspecialchars($oneBillet->getContenu())).'.'; ?>

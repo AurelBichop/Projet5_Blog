@@ -13,7 +13,8 @@ class ManagerCommentaire extends AbstractManager
                 FROM commentaire AS C
                 INNER JOIN membre AS M 
                 ON C.id_membre = M.id
-                WHERE C.id_billet=:id";
+                WHERE C.id_billet=:id
+                ORDER BY C.id DESC";
 
         $billet = [
             'id' => $idBillet

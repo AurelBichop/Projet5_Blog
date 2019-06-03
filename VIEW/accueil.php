@@ -5,17 +5,15 @@
         <div class="container">
             <h1 class="display-3"><strong><?php echo htmlspecialchars($lastBillet->getChapeau()); ?></strong></h1>
             <p>
-                <time>Edité :
+                <em>Edité :
 
                     <?php
 
-                    $date = new DateTime($lastBillet->getDate());
-
-                    echo $date->format('d-m-Y à H:i').' par '. ucfirst($lastBillet->getNomMembre()).' '.ucfirst($lastBillet->getPreNomMembre());
+                    echo $lastBillet->getDate().' par '. ucfirst($lastBillet->getNomMembre()).' '.ucfirst($lastBillet->getPreNomMembre());
 
                     ?>
 
-                </time>
+                </em>
             </p>
             <p>
                 <?php echo Utils::Lireplus(htmlspecialchars($lastBillet->getContenu())).'.'; ?>
@@ -42,9 +40,7 @@
                             <p><a class="btn btn-secondary" href="<?php echo './?action=billet&num='.$unBillet->getId(); ?>" role="button"><?php echo $details; ?></a></p>
                         </div>
 
-                <?php
-                 endforeach;
-                 ?>
+                <?php endforeach; ?>
 
         </div>
 

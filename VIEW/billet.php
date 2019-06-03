@@ -5,17 +5,15 @@
         <div class="container">
             <h1 class="display-3"><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h1>
             <p>
-                <time>Date :
+                <em>Date :
 
                     <?php
 
-                    $date = new DateTime($Billet->getDate());
-
-                    echo $date->format('d-m-Y à H:i').' par '. ucfirst(htmlspecialchars($Billet->getNomMembre())).' '.ucfirst(htmlspecialchars($Billet->getPreNomMembre()));
+                    echo $Billet->getDate().' par '. ucfirst(htmlspecialchars($Billet->getNomMembre())).' '.ucfirst(htmlspecialchars($Billet->getPreNomMembre()));
 
                     ?>
 
-                </time>
+                </em>
             </p>
 
         </div>
@@ -27,7 +25,7 @@
         <div class="row">
                 <div class="col-md-auto">
 
-                      <p><?php echo htmlspecialchars($Billet->getContenu()); ?></p>
+                      <p><?php echo nl2br(htmlspecialchars($Billet->getContenu())); ?></p>
 
                 </div>
 
@@ -36,21 +34,15 @@
 
         <?php
 
-        if (!empty($Commentaires))
-        {
-            ?>
+        if (!empty($Commentaires)): ?>
+
             <h4>Commentaires :</h4>
-            <?php
 
-            foreach ($Commentaires as $com):
-
-                $dateCom = new DateTime($com->getDateheure());
-
-                ?>
+            <?php foreach ($Commentaires as $com): ?>
 
                 <div class="alert alert-primary">
                     <h5><?php echo 'Ecrit par '.htmlspecialchars($com->getNom()).' '.htmlspecialchars($com->getPrenom()); ?></h5>
-                    <em><?php echo 'Le '.$dateCom->format('d-m-Y à H:i'); ?></em>
+                    <em><?php echo 'Le '.$com->getDate(); ?></em>
                     <div class="alert">
                         <?php echo nl2br(htmlspecialchars($com->getContenu())); ?>
                     </div>
@@ -58,9 +50,7 @@
                 </div>
             <?php endforeach; ?>
 
-        <?php
-        }
-        ?>
+        <?php endif; ?>
 
 
 

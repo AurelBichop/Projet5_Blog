@@ -132,10 +132,14 @@ class Billet
     }
 
     /**
-     * @return mixed
+     * @return string
+     * @throws Exception
      */
     public function getDate()
     {
-        return $this->_date;
+        $date = new DateTime($this->_date);
+
+        return $date->format('d-m-Y à H:i');
+
     }
 }

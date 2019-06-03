@@ -120,11 +120,14 @@ class Commentaire
     }
 
     /**
-     * @return mixed
+     * @return string
+     * @throws Exception
      */
-    public function getDateheure()
+    public function getDate()
     {
-        return $this->_date_heure;
+        $date = new DateTime($this->_date_heure);
+
+        return $date->format('d-m-Y à H:i');
     }
 
 
