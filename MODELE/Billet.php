@@ -7,6 +7,10 @@ class Billet
 
     private $_id;
     private $_id_membre;
+
+    private $_nom_membre;
+    private $_prenom_membre;
+
     private $_chapeau;
     private $_contenu;
     private $_date;
@@ -37,6 +41,23 @@ class Billet
     {
         $this->_id_membre = $id_membre;
     }
+
+    /**
+     * @param mixed $nom_membre
+     */
+    public function setNom($nom_membre)
+    {
+        $this->_nom_membre = $nom_membre;
+    }
+
+    /**
+     * @param mixed $prenom_membre
+     */
+    public function setPrenom($prenom_membre)
+    {
+        $this->_prenom_membre = $prenom_membre;
+    }
+
 
     /**
      * @param mixed $contenu
@@ -75,6 +96,24 @@ class Billet
     {
         return $this->_id_membre;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getNomMembre()
+    {
+        return $this->_nom_membre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenomMembre()
+    {
+        return $this->_prenom_membre;
+    }
+
 
     /**
      * @return mixed

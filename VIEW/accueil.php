@@ -3,15 +3,15 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3"><?php echo $lastBillet->getId() .' <strong>' . htmlspecialchars($lastBillet->getChapeau()) . '</strong>'; ?></h1>
+            <h1 class="display-3"><strong><?php echo htmlspecialchars($lastBillet->getChapeau()); ?></strong></h1>
             <p>
-                <time>Date :
+                <time>Edité :
 
                     <?php
 
                     $date = new DateTime($lastBillet->getDate());
 
-                    echo $date->format('d-m-Y à H:i').' ecrit par '. $lastBillet->getIdmembre();
+                    echo $date->format('d-m-Y à H:i').' par '. ucfirst($lastBillet->getNomMembre()).' '.ucfirst($lastBillet->getPreNomMembre());
 
                     ?>
 
@@ -37,7 +37,7 @@
                 foreach ($listeBillet as $unBillet): ?>
 
                         <div class="col-md-4">
-                            <h2><?php echo $unBillet->getChapeau(); ?></h2>
+                            <h2><?php echo htmlspecialchars($unBillet->getChapeau()); ?></h2>
                             <p><?php echo Utils::Lireplus(htmlspecialchars($unBillet->getContenu())).'.'; ?></p>
                             <p><a class="btn btn-secondary" href="<?php echo './?action=billet&num='.$unBillet->getId(); ?>" role="button"><?php echo $details; ?></a></p>
                         </div>

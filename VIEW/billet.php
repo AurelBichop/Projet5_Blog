@@ -3,7 +3,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3"><?php echo $Billet->getId() .' <strong>' . htmlspecialchars($Billet->getChapeau()) . '</strong>'; ?></h1>
+            <h1 class="display-3"><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h1>
             <p>
                 <time>Date :
 
@@ -11,7 +11,7 @@
 
                     $date = new DateTime($Billet->getDate());
 
-                    echo $date->format('d-m-Y à H:i').' ecrit par '. $Billet->getIdmembre();
+                    echo $date->format('d-m-Y à H:i').' par '. ucfirst(htmlspecialchars($Billet->getNomMembre())).' '.ucfirst(htmlspecialchars($Billet->getPreNomMembre()));
 
                     ?>
 
@@ -27,7 +27,7 @@
         <div class="row">
                 <div class="col-md-auto">
 
-                      <p><?php echo $Billet->getContenu(); ?></p>
+                      <p><?php echo htmlspecialchars($Billet->getContenu()); ?></p>
 
                 </div>
 
@@ -42,11 +42,24 @@
             <h4>Commentaires :</h4>
             <?php
 
-            foreach ($Commentaires as $com){
-                echo "<div class=\"alert alert-primary\" role=\"alert\">".$com->getContenu()."</div>";
-            }
-        }
+            foreach ($Commentaires as $com):
 
+                $dateCom = new DateTime($com->getDateheure());
+
+                ?>
+
+                <div class="alert alert-primary">
+                    <h5><?php echo 'Ecrit par '.htmlspecialchars($com->getNom()).' '.htmlspecialchars($com->getPrenom()); ?></h5>
+                    <em><?php echo 'Le '.$dateCom->format('d-m-Y à H:i'); ?></em>
+                    <div class="alert">
+                        <?php echo nl2br(htmlspecialchars($com->getContenu())); ?>
+                    </div>
+
+                </div>
+            <?php endforeach; ?>
+
+        <?php
+        }
         ?>
 
 
@@ -56,7 +69,7 @@
             <h4>Laisser un commentaire</h4>
         <form action="./?action=newcommentaire&num=<?php echo $Billet->getId(); ?>" method="post">
             <div class="form-group">
-                <label for="postCommentaire"><?php echo $_SESSION['nom'].' le '.date('d-m-Y') ?></label>
+                <label for="postCommentaire"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']).' le '.date('d-m-Y') ?></label>
 
                     <textarea id="postCommentaire" class="form-control" rows="" name="contenu"></textarea>
                     <input type="hidden" name="id_billet" value="<?php echo $Billet->getId();?>" />

@@ -9,6 +9,10 @@ class Commentaire
     private $_id;
     private $_id_billet;
     private $_id_membre;
+
+    private $_nom;
+    private $_prenom;
+
     private $_contenu;
     private $_date_heure;
 
@@ -34,6 +38,23 @@ class Commentaire
     public function setIdmembre($id_membre)
     {
         $this->_id_membre = $id_membre;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->_nom = $nom;
+    }
+
+
+    /**
+     * @param mixed $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->_prenom = $prenom;
     }
 
       /**
@@ -74,6 +95,21 @@ class Commentaire
         return $this->_id_membre;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return ucfirst($this->_nom);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return ucfirst($this->_prenom);
+    }
 
     /**
      * @return mixed

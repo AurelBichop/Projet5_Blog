@@ -9,7 +9,11 @@ class ManagerCommentaire extends AbstractManager
 
         $objetCommentaire = [];
 
-        $sql = "SELECT * FROM commentaire WHERE id_billet=:id";
+        $sql = "SELECT C.*, M.nom, M.prenom 
+                FROM commentaire AS C
+                INNER JOIN membre AS M 
+                ON C.id_membre = M.id
+                WHERE C.id_billet=:id";
 
         $billet = [
             'id' => $idBillet

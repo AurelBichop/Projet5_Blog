@@ -50,7 +50,13 @@ class ManagerBillet extends AbstractManager
     public function getLastBillets()
     {
 
-        $sql = 'SELECT id, id_membre, chapeau, contenu, date FROM billet ORDER BY id DESC LIMIT 1';
+        $sql = 'SELECT B.id, B.id_membre, M.nom, M.prenom, B.chapeau, B.contenu, B.date 
+                FROM billet AS B
+                INNER JOIN membre AS M
+				ON B.id_membre = M.id
+                ORDER BY id 
+                DESC LIMIT 1';
+
         $reponse = $this->executerRequete($sql);
 
         $donnee = $reponse->fetch();
@@ -70,7 +76,12 @@ class ManagerBillet extends AbstractManager
     public function getBilletSelect(int $id_billet)
     {
 
-        $sql = "SELECT id, id_membre, chapeau, contenu, date FROM billet WHERE id=:id";
+        $sql = "SELECT B.id, B.id_membre, M.nom, M.prenom, B.chapeau, B.contenu, B.date 
+                FROM billet AS B
+                INNER JOIN membre AS M
+				ON B.id_membre = M.id
+				WHERE B.id=:id
+				";
 
         $billet = [
             'id' => $id_billet
@@ -89,7 +100,13 @@ class ManagerBillet extends AbstractManager
 
     private function listAllBillet(){
 
-        $sql = "SELECT id, id_membre, chapeau, contenu, date FROM billet ORDER BY billet.id DESC";
+        $sql = "SELECT B.id, B.id_membre, M.nom, M.prenom, B.chapeau, B.contenu, B.date 
+                FROM billet AS B
+                INNER JOIN membre AS M
+				ON B.id_membre = M.id
+                ORDER BY B.id 
+                DESC";
+
         return $sql;
     }
 
