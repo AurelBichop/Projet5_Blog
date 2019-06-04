@@ -4,7 +4,7 @@
 class ControleurBillet
 {
 
-    public function afficheListeBillet()
+    public function afficheListeBillet($message = null)
     {
 
         /*********************************************************
@@ -28,7 +28,8 @@ class ControleurBillet
         $vue->generer(array(
             'lastBillet' =>$lastBilletControlleur,
             'listeBillet' => $listeBilletControlleur,
-            'details'=>'Voir détails &raquo;'
+            'details'=>'Voir détails &raquo;',
+            'message'=>$message
              ));
 
     }

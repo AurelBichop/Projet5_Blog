@@ -4,7 +4,7 @@ class ControleurConnexion
 
 {
 
-    public function affichePageConnexion()
+    public function affichePageConnexion($message = null)
     {
 
         /******************************
@@ -13,7 +13,7 @@ class ControleurConnexion
 
         $vue = new Vue('connexion', 'Connexion');
 
-        $vue->generer(array('details'=>'Voir détails &raquo;'));
+        $vue->generer(array('details'=>'Voir détails &raquo;','message'=>$message));
 
     }
 
@@ -60,7 +60,8 @@ class ControleurConnexion
 
                 // Renvoie sur la page d'accueil
                 $controlleurBillet = new ControleurBillet();
-                $controlleurBillet->afficheListeBillet();
+                $message = 'Connexion Reussi';
+                $controlleurBillet->afficheListeBillet($message);
 
             }else{
                 throw new LoginException();
@@ -75,7 +76,8 @@ class ControleurConnexion
         
         // Renvoie sur la page d'accueil
         $controlleurBillet = new ControleurBillet();
-        $controlleurBillet->afficheListeBillet();
+        $message = 'Deconnexion Reussi';
+        $controlleurBillet->afficheListeBillet($message);
     }
 
     public function verifOneMembre($member, $password){

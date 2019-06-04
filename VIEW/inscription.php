@@ -1,6 +1,9 @@
 
 
 <div class="container mb-4">
+    <?php if($message) :?>
+        <div class="alert alert-danger"><?php echo $message; ?></div>
+    <?php endif;?>
     <h1>Formulaire Nouveau Membre</h1>
 
 
@@ -14,7 +17,7 @@
                 <input type="texte" id="prenom" name="prenom" value="" class="form-control" placeholder="votre Prenom">
             </div><div class="form-group">
             <label>Courriel</label> *
-            <input type="email" id="email" name="courriel" value="" class="form-control" placeholder="votre courriel">
+            <input type="text" id="email" name="courriel" value="" class="form-control" placeholder="votre courriel">
         </div>
         <div class="form-group">
             <label>Mot de passe</label> *
@@ -26,6 +29,6 @@
         </div>
         <div class="form-group">
             <button type=submit class="btn btn-primary">S'incrire</button></div>
-        <div class="form-group"><input type="hidden" id="hidden" name="hidden"></div>
+
     </form>
 </div>

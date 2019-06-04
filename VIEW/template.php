@@ -44,15 +44,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="./?action=listebillets&page=1">Les Billets</a>
             </li>
+
+            <?php if (!isset($_SESSION['connecte'])) : ?>
             <li class="nav-item">
                 <a class="nav-link" href="./?action=inscription">S'incrire</a>
             </li>
-
-            <?php if (!isset($_SESSION['connecte'])) : ?>
             <li class="nav-item">
                 <a class="nav-link" href="./?action=connexion">Se Connecter</a>
             </li>
             <?php endif; ?>
+
 
             <?php if (isset($_SESSION['connecte'])) : ?>
                 <li class="nav-item">
@@ -78,8 +79,8 @@
         <div class="col-md-auto">
             | <a href="./?action=accueil">Accueil</a> |
             <a href="./?action=listebillet">Les Billets</a> |
-            <a href="./?action=inscription">S'incrire</a> |
             <?php if (!isset($_SESSION['connecte'])) : ?>
+            <a href="./?action=inscription">S'incrire</a> |
             <a href="./?action=connexion">Se Connecter</a> |
             <?php endif; ?>
             <a href="./?action=contact">Contact</a> |

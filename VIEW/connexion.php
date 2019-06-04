@@ -1,4 +1,7 @@
 <div class="container mb-4">
+    <?php if($message) :?>
+        <div class="alert alert-success"><?php echo $message; ?></div>
+    <?php endif;?>
     <h1>Connexion</h1>
 
 
