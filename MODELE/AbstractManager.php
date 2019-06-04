@@ -20,9 +20,11 @@ abstract class AbstractManager
 
         }
         else {
+
             $resultat = $this->getBDD()->prepare($sql);  // requête préparée
             $resultat->execute($params);
         }
+
         return $resultat;
     }
 

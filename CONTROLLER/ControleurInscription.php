@@ -41,8 +41,15 @@ class ControleurInscription
             return $this->affichePageInscription($message);
         }
 
+        if (!$this->verifPass($data['password'],$data['verif'])){
+            $message = 'Les mots de pass sont différents';
+            return $this->affichePageInscription($message);
+        }
 
-        var_dump($data);
+        if(!$this->verifEmail($data['courriel'])){
+            $message = 'Email invalide ou deja existant';
+            return $this->affichePageInscription($message);
+        }
 
 
         $newmembre = $this->addObjetMembre($data);
@@ -53,60 +60,62 @@ class ControleurInscription
 
         // Renvoie sur la page d'accueil
         $controlleurBillet = new ControleurConnexion();
-        $message = 'Inscription Réussi, Bienvenue sur notre blog';
+        $message = 'Inscription Réussi, Bienvenue sur notre blog, Merci de vous connecter';
         return $controlleurBillet->affichePageConnexion($message);
 
     }
 
 
+    /**
+     * @param array $post
+     * @return bool
+     */
     private function verifPost(array $post){
 
-        $retour = false;
-var_dump($post);
+        $retourPost = false;
         foreach ($post as $a){
 
-                if(strlen(trim($a))<3){
-                    $retour = true;
-
-
+                if(strlen(trim($a))<3 OR strlen(trim($a))>30){
+                    $retourPost = true;
             }
         }
-        return $retour;
+        return $retourPost;
     }
 
+    /**
+     * @param $pass
+     * @param $verif
+     * @return bool
+     */
 
+    private function verifPass($pass, $verif){
 
-     /*
-     *
-     *
-     * exemple
-     * $tab = array(array('nom'=>'fga','prenom'=>'dfg'));
+        if($pass === $verif){
+            return true;
+        }
 
-    function testtab(array $tab){
-    $retour = false;
-
-    foreach ($tab as $a){
-
-    foreach($a as $b){
-
-
-    if(strlen(trim($b))<3){
-    $retour = true;
+        return false;
     }
 
+    /**
+     * @param $mail
+     * @return bool
+     */
 
+    private function verifEmail($mail){
 
+        $retour = false;
+
+         if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $mail)){
+
+             $ObjManagerMembre = new ManagerMembre();
+
+             if($ObjManagerMembre->verifMail($mail)){
+                 $retour = true;
+             }
+         }
+
+         return $retour;
     }
-    }
-    return $retour;
-    }
 
-
-    $verif = testtab($tab);
-    var_dump($verif);
-
-    if(!$verif){
-    echo 'je recupere les données';
-    }
-    */
 }

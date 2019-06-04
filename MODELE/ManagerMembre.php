@@ -30,7 +30,6 @@ class ManagerMembre extends AbstractManager
 
         $sql = 'INSERT INTO membre (is_administrateur, nom, prenom, courriel, password, date_inscription) VALUES (0, :nom, :prenom, :courriel, :password, NOW())';
         $this->executerRequete($sql, $dataMembre);
-
     }
 
 
@@ -55,5 +54,23 @@ class ManagerMembre extends AbstractManager
         return $membre;
     }
 
+
+    public function verifMail($email){
+
+        $sql = "SELECT courriel FROM membre WHERE courriel=:mail";
+
+        $mail = [
+            'mail' => $email
+        ];
+
+        $reponse =$this->executerRequete($sql,$mail);
+        $verif = $reponse->fetch();
+
+        if ($verif === false){
+            return true;
+        }
+
+        return false;
+    }
 
 }
