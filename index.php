@@ -10,7 +10,7 @@ require_once 'tools/LoginException.php';
 require_once 'tools/AdminException.php';
 require_once 'tools/Autoloader.php';
 
-require_once 'CONTROLLER/admin/ControleurBilletAdmin.php';
+
 
 
 /**
@@ -107,12 +107,11 @@ try {
             case 'admin.billet':
 
                 $controlleurBilletAdmin= new ControleurBilletAdmin();
-                $controlleurBilletAdmin->afficheBilletPagination(5, 'listeBilletsAdmin');
+                $controlleurBilletAdmin->afficheBilletPagination(5, 'admin/listeBilletsAdmin');
                 break;
 
 
             case 'admin.billet.add':
-
                 $controlleurBilletAdmin= new ControleurBilletAdmin();
                 $controlleurBilletAdmin->BilletAdd();
                 break;

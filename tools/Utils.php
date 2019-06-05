@@ -15,8 +15,9 @@ class Utils{
      */
 
      public static function Lireplus(string $contenu){
-        $contenu = substr($contenu, 0,strpos($contenu, '.') );
-        return $contenu;
+
+        $contenu = substr($contenu, 0,150);
+        return $contenu.'...';
     }
 
 
