@@ -65,6 +65,12 @@
                 <a class="nav-link" href="./?action=contact">Contact</a>
             </li>
 
+            <?php if (isset($_SESSION['administrateur']) && ($_SESSION['administrateur']==1)): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="./?action=admin.billet">Administrer</a>
+                </li>
+            <?php endif; ?>
+
 
         </ul>
     </div>

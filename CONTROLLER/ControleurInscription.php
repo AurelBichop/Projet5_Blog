@@ -7,8 +7,6 @@ class ControleurInscription
 
     public function affichePageInscription($message = null)
     {
-
-
         /******************************
          * Création de la Vue en Objet
          ******************************/
@@ -19,17 +17,23 @@ class ControleurInscription
                             'details'=>'Voir détails &raquo;',
                             'message'=>$message
                             ));
-
     }
 
-
+    /**
+     * @param array $data
+     * @return Membre
+     */
     public function addObjetMembre(array $data)
     {
-
         $nouveauMembre = new Membre($data);
         return $nouveauMembre;
-
     }
+
+
+    /**
+     * Permet l'enregistrement ede nouveau Membre en BDD suite aux verifications des informations
+     * Renvoie sur la page connexion
+     */
 
     public function enregistreMembre()
     {
@@ -67,12 +71,16 @@ class ControleurInscription
 
 
     /**
+     * Verifie que les Champs soient rempli
+     * avec Minimum 3 caracteres et maximum 30
+     *
      * @param array $post
      * @return bool
      */
     private function verifPost(array $post){
 
         $retourPost = false;
+
         foreach ($post as $a){
 
                 if(strlen(trim($a))<3 OR strlen(trim($a))>30){
@@ -83,6 +91,8 @@ class ControleurInscription
     }
 
     /**
+     * Verifie que les mots de passes soient identique
+     *
      * @param $pass
      * @param $verif
      * @return bool
@@ -97,7 +107,10 @@ class ControleurInscription
         return false;
     }
 
+
     /**
+     * Verifie que le courriel correspond au format email et n'existe pas deja en BDD
+     *
      * @param $mail
      * @return bool
      */
@@ -105,6 +118,8 @@ class ControleurInscription
     private function verifEmail($mail){
 
         $retour = false;
+
+        $mail = strtolower($mail);
 
          if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $mail)){
 

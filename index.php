@@ -1,12 +1,16 @@
 <?php
 session_start();
 
+require_once 'config/config.php';
 require_once 'debug/Debug.php';
 
 require_once 'tools/Utils.php';
 require_once 'tools/BilletException.php';
 require_once 'tools/LoginException.php';
+require_once 'tools/AdminException.php';
 require_once 'tools/Autoloader.php';
+
+require_once 'CONTROLLER/admin/ControleurBilletAdmin.php';
 
 
 /**
@@ -47,7 +51,7 @@ try {
 
             case 'listebillets':
                 $controlleurListBillet = new ControleurBillet();
-                $controlleurListBillet->afficheBilletPagination();
+                $controlleurListBillet->afficheBilletPagination('3');
                 break;
 
 
@@ -100,6 +104,19 @@ try {
                 $controlleurDeconnexion->deconnexion();
                 break;
 
+            case 'admin.billet':
+
+                $controlleurBilletAdmin= new ControleurBilletAdmin();
+                $controlleurBilletAdmin->afficheBilletPagination(5, 'listeBilletsAdmin');
+                break;
+
+
+            case 'admin.billet.add':
+
+                $controlleurBilletAdmin= new ControleurBilletAdmin();
+                $controlleurBilletAdmin->BilletAdd();
+                break;
+
             default:
                 $controlleurBillet = new ControleurBillet();
                 $controlleurBillet->afficheListeBillet();
@@ -117,6 +134,9 @@ try {
 
 }catch (LoginException $e){
     $e->getLoginError();
+
+}catch (AdminException $e){
+    $e->getLoginAdminError();
 
 }catch (Exception $e){
     $e->getMessage();

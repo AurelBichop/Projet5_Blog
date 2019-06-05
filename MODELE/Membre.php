@@ -56,7 +56,7 @@
       */
      public function setCourriel($courriel)
      {
-         $this->_courriel = $courriel;
+         $this->_courriel = strtolower($courriel);
      }
 
      /**

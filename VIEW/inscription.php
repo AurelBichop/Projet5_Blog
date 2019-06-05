@@ -10,14 +10,14 @@
     <form action="./?action=newinscription" method="post">
         <div class="form-group">
             <label>Nom</label> *
-            <input type="texte" id="nom" name="nom" value="" class="form-control" placeholder="votre Nom">
+            <input type="texte" id="nom" name="nom" value="<?php if(isset($_POST['nom'])){ echo $_POST['nom']; } ?>" class="form-control" placeholder="votre Nom">
         </div><div class="form-group">
             <div class="form-group">
                 <label>Prenom</label> *
-                <input type="texte" id="prenom" name="prenom" value="" class="form-control" placeholder="votre Prenom">
+                <input type="texte" id="prenom" name="prenom" value="<?php if(isset($_POST['prenom'])){ echo $_POST['prenom']; } ?>" class="form-control" placeholder="votre Prenom">
             </div><div class="form-group">
             <label>Courriel</label> *
-            <input type="text" id="email" name="courriel" value="" class="form-control" placeholder="votre courriel">
+            <input type="text" id="email" name="courriel" value="<?php if(isset($_POST['courriel'])){ echo $_POST['courriel']; } ?>" class="form-control" placeholder="votre courriel">
         </div>
         <div class="form-group">
             <label>Mot de passe</label> *

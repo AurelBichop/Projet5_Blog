@@ -141,8 +141,22 @@ class ManagerBillet extends AbstractManager
 
 
         return $objetBillet;
+    }
+
+    public function addBilletBDD(Billet $billet)
+    {
+        
+            $dataBillet = array(
+                'idMembre'=>$billet->getIdmembre(),
+                'chapeau'=>$billet->getChapeau(),
+                'contenu'=>$billet->getContenu()
+            );
+
+            $sql= 'INSERT INTO billet (id_membre, chapeau, contenu, date_heure) VALUES (:idMembre, :chapeau, :contenu, NOW())';
+            $this->executerRequete($sql, $dataBillet);
 
 
     }
+
 
 }

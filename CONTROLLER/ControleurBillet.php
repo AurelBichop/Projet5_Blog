@@ -36,20 +36,23 @@ class ControleurBillet
 
     /**
      * Affichage de la liste de tous les billets paginé
+
+     * @param $nombreBillets
+     * @param string $page
      */
 
+    public function afficheBilletPagination($nombreBillets, $page = 'listeBillets'){
 
-    public function afficheBilletPagination(){
+        $nombreBillets = (int)$nombreBillets;
 
         $managerBillet = new ManagerBillet();
 
-        $nombreBillets = 3;
 
         $allBillets = $managerBillet->billetPagination($this->pageActuelle($nombreBillets),$nombreBillets);
 
         $nbDePage = ceil($managerBillet->nbBillets()/$nombreBillets);
 
-        $vue = new Vue('listeBillets', 'Billets');
+        $vue = new Vue($page, 'Billets');
 
         $vue->generer(array(
             'listeBillets' => $allBillets,
