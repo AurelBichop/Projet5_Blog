@@ -106,14 +106,18 @@ try {
 
             case 'admin.billet':
 
-                $controlleurBilletAdmin= new ControleurBilletAdmin();
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
                 $controlleurBilletAdmin->afficheBilletPagination(5, 'admin/listeBilletsAdmin');
                 break;
 
-
             case 'admin.billet.add':
-                $controlleurBilletAdmin= new ControleurBilletAdmin();
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
                 $controlleurBilletAdmin->BilletAdd();
+                break;
+
+            case 'admin.billet.edit':
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
+                $controlleurBilletAdmin->BilletEdit();
                 break;
 
             default:
@@ -126,6 +130,7 @@ try {
         $controlleurBillet = new ControleurBillet();
         $controlleurBillet->afficheListeBillet();
     }
+
 
 
 }catch (BilletException $e){

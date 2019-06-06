@@ -41,7 +41,7 @@ class ControleurInscription
         {
             $data = $_POST;
         }else{
-            $message = 'Merci de Bien renseigner tous les Champs';
+            $message = CHAMP_VIDE;
             return $this->affichePageInscription($message);
         }
 

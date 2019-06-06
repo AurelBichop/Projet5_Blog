@@ -28,16 +28,20 @@ class ControleurBilletAdmin extends ControleurBillet
         return false;
     }
 
-
+    /********************************************************
+     * Création de la Vue en Objet Pour l'ajout d'article
+     ********************************************************/
     public function afficheAdminAdd($message = null){
-        /******************************
-         * Création de la Vue en Objet
-         ******************************/
+
         $vue = new Vue('admin/AddBilletAdmin', 'Admin Articles');
 
         $vue->generer(array('message'=>$message));
     }
 
+    /**
+     * Fonction pour l'ajout d'un article
+     * @throws BilletException
+     */
     public function BilletAdd(){
 
         $message = null;
@@ -48,11 +52,11 @@ class ControleurBilletAdmin extends ControleurBillet
             {
                 $data = $_POST;
             }else{
-                $message = 'Merci de Bien renseigner tous les Champs';
+                $message = CHAMP_VIDE;
                 return $this->afficheAdminAdd($message);
             }
 
-            $billet = $this->addObjetBillet($data);
+            $billet = $this->ObjetBillet($data);
 
             $managerBillet = new ManagerBillet();
             $managerBillet->addBilletBDD($billet);
@@ -64,17 +68,64 @@ class ControleurBilletAdmin extends ControleurBillet
     }
 
     /**
-     * Permet de creer un Objet Commentaire
+     * Permet de creer un Objet Billet
      *
      * @param array $data
      * @return Billet
      * @throws BilletException
      */
 
-    public function addObjetBillet(array $data){
+    public function ObjetBillet(array $data){
         $newBillet = new Billet($data);
         return $newBillet;
     }
+
+    /**
+     * Pour l'update d'un article
+     */
+
+    public function BilletEdit(){
+
+        $data = $_POST;
+
+        $message = null;
+
+        $managerBillet = new ManagerBillet();
+
+        if(!empty($data)){
+
+            if(!$this->verifPost($data))
+            {
+                $billetUpdate = $this->ObjetBillet($data);
+                $managerBillet->updateBilletBDD($billetUpdate);
+                $message = 'Article Modifié';
+            }else{
+                $message = CHAMP_VIDE;
+            }
+        }
+
+        $idBillet = $this->VerifIdBillet();
+
+        $billetSelect = $managerBillet->getBilletSelect($idBillet);
+
+        $vue = new Vue('admin/EditBilletAdmin', 'Edit Articles');
+
+        $vue->generer(array('message'=>$message,'billet'=>$billetSelect));
+    }
+
+
+    private function VerifIdBillet(){
+
+        if ($_GET['action'] === 'admin.billet.edit'){
+            if(!empty($_GET['id']))
+            {
+                return $idBillet =  $_GET['id'];
+            }
+        }
+
+        return null;
+    }
+
 
     /**
      * Verifie que les Champs soient rempli
@@ -87,7 +138,7 @@ class ControleurBilletAdmin extends ControleurBillet
 
         $retourPost = false;
 
-        if((strlen($post['chapeau'])<5 || strlen($post['contenu'])<5)){
+        if((strlen(trim($post['chapeau']))<5 || strlen(trim($post['contenu']))<5)){
             $retourPost = true;
         }
         return $retourPost;

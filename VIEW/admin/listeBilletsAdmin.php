@@ -23,9 +23,9 @@
                 <td><?php echo $oneBillet->getId(); ?></td>
                 <td><?php echo htmlspecialchars($oneBillet->getChapeau()); ?></td>
                 <td>
-                    <a class="btn btn-primary" href="?p=admin.posts.edit&id=<?= $oneBillet->getId();?>">Editer</a>
+                    <a class="btn btn-primary" href="?action=admin.billet.edit&id=<?= $oneBillet->getId();?>">Editer</a>
 
-                    <form action="?p=admin.posts.delete" method="post" style="display:inline">
+                    <form action="?action=admin.billet.delete" method="post" style="display:inline">
 
                         <input type="hidden" name="id" value="<?= $oneBillet->getId(); ?>">
 

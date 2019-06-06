@@ -159,4 +159,23 @@ class ManagerBillet extends AbstractManager
     }
 
 
+    public function UpdateBilletBDD(Billet $billet)
+    {
+
+        $dataBillet = array(
+            'idBillet'=>$billet->getId(),
+            'idMembre'=>$billet->getIdmembre(),
+            'chapeau'=>$billet->getChapeau(),
+            'contenu'=>$billet->getContenu()
+        );
+
+        $sql= 'UPDATE billet SET id_membre=:idMembre, chapeau=:chapeau, contenu=:contenu, date=NOW() WHERE id=:idBillet';
+
+
+        $this->executerRequete($sql, $dataBillet);
+
+    }
+
+
+
 }
