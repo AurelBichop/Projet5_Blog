@@ -1,9 +1,5 @@
 <div class="container">
-<?php
-    ////echo '<pre>';
-    ////var_dump ($billet);
-    ////echo '</pre>';
-    ////?>
+
     <?php if($message) :?>
         <div class="alert alert-success"><?php echo $message; ?></div>
     <?php endif;?>

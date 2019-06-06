@@ -104,6 +104,11 @@ try {
                 $controlleurDeconnexion->deconnexion();
                 break;
 
+            case 'moncompte':
+                $controlleurMembre = new ControleurMonCompte();
+                $controlleurMembre->afficheMonCompte();
+                break;
+
             case 'admin.billet':
 
                 $controlleurBilletAdmin = new ControleurBilletAdmin();
