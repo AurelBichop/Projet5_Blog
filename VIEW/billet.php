@@ -3,6 +3,11 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
+
+            <?php if($message) :?>
+                <div class="alert alert-danger"><?php echo $message; ?></div>
+            <?php endif;?>
+
             <h1 class="display-3"><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h1>
             <p>
                 <em>Date :

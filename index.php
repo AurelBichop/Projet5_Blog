@@ -120,6 +120,11 @@ try {
                 $controlleurBilletAdmin->BilletEdit();
                 break;
 
+            case 'admin.billet.delete':
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
+                $controlleurBilletAdmin->BilletDelete();
+                break;
+
             default:
                 $controlleurBillet = new ControleurBillet();
                 $controlleurBillet->afficheListeBillet();

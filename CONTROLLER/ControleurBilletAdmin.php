@@ -114,6 +114,23 @@ class ControleurBilletAdmin extends ControleurBillet
     }
 
 
+    public function BilletDelete(){
+
+        $numBillet = $_POST['id'];
+        $managerBillet = new ManagerBillet();
+        $managerBillet->deleteBilletBDD($numBillet);
+
+        $message = 'Article Supprimé';
+
+        $this->afficheBilletPagination(5, 'admin/listeBilletsAdmin',$message);
+
+    }
+
+
+
+    /**
+     * @return mixed|null
+     */
     private function VerifIdBillet(){
 
         if ($_GET['action'] === 'admin.billet.edit'){

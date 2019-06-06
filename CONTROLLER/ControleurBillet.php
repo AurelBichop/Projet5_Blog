@@ -41,7 +41,7 @@ class ControleurBillet
      * @param string $page
      */
 
-    public function afficheBilletPagination($nombreBillets, $page = 'listeBillets'){
+    public function afficheBilletPagination($nombreBillets, $page = 'listeBillets',$message = null){
 
         $nombreBillets = (int)$nombreBillets;
 
@@ -56,7 +56,8 @@ class ControleurBillet
 
         $vue->generer(array(
             'listeBillets' => $allBillets,
-            'pages'=>$nbDePage
+            'pages'=>$nbDePage,
+            'message'=>$message
         ));
 
     }
@@ -67,7 +68,7 @@ class ControleurBillet
      * @throws BilletException
      */
 
-    public function afficheBilletSelect($id_billet)
+    public function afficheBilletSelect($id_billet,$message = null)
     {
         $id_billet = (int)$id_billet;
 
@@ -88,7 +89,8 @@ class ControleurBillet
 
         $vue->generer(array(
             'Billet' =>$BilletSelect,
-            'Commentaires'=>$commentairesBilletSelect
+            'Commentaires'=>$commentairesBilletSelect,
+            'message'=>$message,
         ));
 
     }
@@ -112,15 +114,25 @@ class ControleurBillet
     public function addCommentaire(){
 
         $data = $_POST;
+        $message = null;
 
-        $objetCommentaire = $this->addObjetCommentaire($data);
+        if(!empty($data)){
 
-        $managerCom = new ManagerCommentaire();
+            if($this->verifPost($data['contenu'])){
+                $message = CHAMP_VIDE;
+            }else{
+                $objetCommentaire = $this->addObjetCommentaire($data);
 
-        $managerCom->addComBDD($objetCommentaire);
+                $managerCom = new ManagerCommentaire();
+
+                $managerCom->addComBDD($objetCommentaire);
+            }
+
+        }
+
 
         if (!empty($_GET['num'])) {
-            $this->afficheBilletSelect($_GET['num']);
+            $this->afficheBilletSelect($_GET['num'],$message);
         }
 
     }
@@ -198,7 +210,22 @@ class ControleurBillet
         return $pageActuelle;
     }
 
+    /**
+     * Verifie que les Champs soient rempli
+     * avec Minimum de 3 caracteres
+     *
+     * @param array $post
+     * @return bool
+     */
+    private function verifPost($postCom){
 
+        $retourPost = false;
+
+        if((strlen(trim($postCom))<3)){
+            $retourPost = true;
+        }
+        return $retourPost;
+    }
 }
 
 

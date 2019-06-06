@@ -1,5 +1,9 @@
 <div class="container">
 
+    <?php if($message) :?>
+        <div class="alert alert-success"><?php echo $message; ?></div>
+    <?php endif;?>
+
     <h1>Administrer les articles</h1>
 
     <p>
@@ -29,7 +33,7 @@
 
                         <input type="hidden" name="id" value="<?= $oneBillet->getId(); ?>">
 
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-danger" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette Article?'));">Supprimer</button>
                     </form>
 
                 </td>

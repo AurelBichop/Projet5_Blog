@@ -18,6 +18,7 @@ class ManagerBillet extends AbstractManager
     {
 
     $sql = null;
+    $objetBillet = array();
 
     $debut = (int)$debut;
     $fin = (int)$fin;
@@ -174,6 +175,19 @@ class ManagerBillet extends AbstractManager
 
         $this->executerRequete($sql, $dataBillet);
 
+    }
+
+    public function deleteBilletBDD(int $idBillet){
+
+        $idBillet = (int)$idBillet;
+
+        $billet = [
+            'idBillet' => $idBillet
+        ];
+
+        $sql= 'DELETE FROM billet WHERE billet.id=:idBillet';
+
+        $this->executerRequete($sql, $billet);
     }
 
 
