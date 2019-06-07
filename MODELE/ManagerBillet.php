@@ -160,7 +160,7 @@ class ManagerBillet extends AbstractManager
     }
 
 
-    public function UpdateBilletBDD(Billet $billet)
+    public function updateBilletBDD(Billet $billet)
     {
 
         $dataBillet = array(

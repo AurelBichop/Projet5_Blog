@@ -33,7 +33,7 @@
 
                         <input type="hidden" name="id" value="<?= $oneBillet->getId(); ?>">
 
-                        <button type="submit" class="btn btn-danger" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette Article?'));">Supprimer</button>
+                        <button type="submit" class="btn btn-danger" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article ?'));">Supprimer</button>
                     </form>
 
                 </td>

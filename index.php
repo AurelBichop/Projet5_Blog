@@ -109,6 +109,12 @@ try {
                 $controlleurMembre->afficheMonCompte();
                 break;
 
+            case 'moncompte.update':
+                $controlleurMembre = new ControleurMonCompte();
+                $controlleurMembre->updateMonCompte();
+                break;
+
+
             case 'admin.billet':
 
                 $controlleurBilletAdmin = new ControleurBilletAdmin();
@@ -157,6 +163,6 @@ try {
 }
 
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 

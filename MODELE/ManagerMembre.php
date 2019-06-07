@@ -73,4 +73,18 @@ class ManagerMembre extends AbstractManager
         return false;
     }
 
+    public function updateMembre(Membre $membre){
+
+        $dataMembre = array(
+            'idMembre'=>$membre->getId(),
+            'nom'=>$membre->getNom(),
+            'prenom'=>$membre->getPrenom(),
+            'courriel'=>$membre->getCourriel()
+        );
+
+        $sql= 'UPDATE membre SET nom=:nom, prenom=:prenom, courriel=:courriel WHERE id=:idMembre';
+
+        $this->executerRequete($sql, $dataMembre);
+    }
+
 }
