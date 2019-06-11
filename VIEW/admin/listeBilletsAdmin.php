@@ -29,6 +29,7 @@
                 <td>
                     <a class="btn btn-primary" href="?action=admin.billet.edit&id=<?= $oneBillet->getId();?>">Editer</a>
 
+                    <a class="btn btn-success" href="?action=admin.billet.commentaire&id=<?= $oneBillet->getId();?>">Voir les commentaires</a>
                     <form action="?action=admin.billet.delete" method="post" style="display:inline">
 
                         <input type="hidden" name="id" value="<?= $oneBillet->getId(); ?>">
@@ -56,4 +57,5 @@
             <?php endfor; ?>
         </div>
     </div>
+
 </div>

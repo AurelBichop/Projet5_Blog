@@ -7,7 +7,6 @@
 
 class Utils{
 
-
     /**
      * Methode pour limiter le nombre de caracter a l'affichage
      * @param string $contenu

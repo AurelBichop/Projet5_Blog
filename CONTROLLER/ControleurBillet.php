@@ -80,7 +80,10 @@ class ControleurBillet
         $managerCommentaire = new ManagerCommentaire();
 
         $BilletSelect = $managerBillets->getBilletSelect($id_billet);
-        $commentairesBilletSelect = $managerCommentaire->getCommentaire($BilletSelect->getID());
+
+
+        //Affiche les commentaires avec validation
+        $commentairesBilletSelect = $managerCommentaire->getCommentaire($BilletSelect->getID(),1);
 
 
         $numBilletSelect = 'Billet N '.$BilletSelect->getID(). ' ' . $BilletSelect->getChapeau();
@@ -130,6 +133,7 @@ class ControleurBillet
 
         }
 
+        $message = 'Commentaire envoyé, en Attente de validation';
 
         if (!empty($_GET['num'])) {
             $this->afficheBilletSelect($_GET['num'],$message);

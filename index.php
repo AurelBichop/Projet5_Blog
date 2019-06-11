@@ -133,9 +133,20 @@ try {
                 $controlleurBilletAdmin->BilletEdit();
                 break;
 
-            case 'admin.billet.delete':
+            case 'admin.billet.edit':
                 $controlleurBilletAdmin = new ControleurBilletAdmin();
-                $controlleurBilletAdmin->BilletDelete();
+                $controlleurBilletAdmin->BilletEdit();
+                break;
+
+            case 'admin.billet.commentaire':
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
+                $controlleurBilletAdmin->listCommentaires();
+                break;
+
+
+            case 'admin.commentaire.update':
+                $controlleurBilletAdmin = new ControleurBilletAdmin();
+                $controlleurBilletAdmin->ValidCommentaire();
                 break;
 
             default:

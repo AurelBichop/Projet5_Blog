@@ -4,7 +4,7 @@
 class ManagerCommentaire extends AbstractManager
 {
 
-    public function getCommentaire($idBillet)
+    public function getCommentaire($idBillet, int $valid = 0)
     {
 
         $objetCommentaire = [];
@@ -14,10 +14,12 @@ class ManagerCommentaire extends AbstractManager
                 INNER JOIN membre AS M 
                 ON C.id_membre = M.id
                 WHERE C.id_billet=:id
+                AND C.validation=:validation
                 ORDER BY C.id DESC";
 
         $billet = [
-            'id' => $idBillet
+            'id' => $idBillet,
+            'validation' => $valid
         ];
 
         $reponse = $this->executerRequete($sql,$billet);
@@ -46,6 +48,15 @@ class ManagerCommentaire extends AbstractManager
             $this->executerRequete($sql, $dataCommentaire);
         }
 
+    }
+
+    public function updateCom($idCom){
+
+        $idCom = (int)$idCom;
+
+        $sql= 'UPDATE commentaire SET validation=1 WHERE id=:idCom';
+
+        $this->executerRequete($sql, array('idCom'=>$idCom));
     }
 
 }

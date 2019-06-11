@@ -80,6 +80,8 @@ class ControleurBilletAdmin extends ControleurBillet
         return $newBillet;
     }
 
+
+
     /**
      * Pour l'update d'un article
      */
@@ -126,6 +128,56 @@ class ControleurBilletAdmin extends ControleurBillet
 
     }
 
+    public function listCommentaires($message = null){
+
+
+        $idBillet = null;
+
+
+        //verifie l'id du billet
+        if (($_GET['action'] === 'admin.billet.commentaire') OR ($_GET['action'] === 'admin.commentaire.update')){
+            if(!empty($_GET['id'])){
+
+                $idBillet =  $_GET['id'];
+            }
+        }
+
+        $managerCommentaire = new ManagerCommentaire();
+        $listCom = $managerCommentaire->getCommentaire($idBillet);
+
+        if(!$listCom){
+            $message = 'aucun Commentaire a valider pour ce billet';
+        }
+
+        //vue de l'admin des commentaires
+
+        $vue = new Vue('admin/listeCommentaireAdmin', 'Admin Commentaire');
+
+        $vue->generer(array('message'=>$message,'listeCommentaires'=>$listCom));
+
+    }
+
+
+    public function ValidCommentaire(){
+
+
+        $idCom = null;
+
+        //verifie l'id du commentaire
+        if ($_GET['action'] === 'admin.commentaire.update'){
+            if(!empty($_GET['id_commentaire'])){
+
+                $idCom =  $_GET['id_commentaire'];
+            }
+        }
+
+
+        $managerCom = new ManagerCommentaire();
+        $managerCom->updateCom($idCom);
+
+
+        $this->listCommentaires('Commentaire validé');
+    }
 
 
     /**
