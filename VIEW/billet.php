@@ -49,6 +49,9 @@
                     <h5><?php echo 'Ecrit par '.htmlspecialchars($com->getNom()).' '.htmlspecialchars($com->getPrenom()); ?></h5>
                     <em><?php echo 'Le '.$com->getDate(); ?></em>
                     <div class="alert">
+
+                        <img src="VIEW/images/avatar_<?php echo $com->getIdmembre(); ?>" class="img-thumbnail" width="10%" height="10%" alt="Pas de photos" />
+
                         <?php echo nl2br(htmlspecialchars($com->getContenu())); ?>
                     </div>
 

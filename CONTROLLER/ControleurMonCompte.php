@@ -31,9 +31,22 @@ class ControleurMonCompte
 
         if(!empty($data)){
 
+
             if(!$this->verifPost($data))
             {
+
                 $membreUpdate = $this->ObjetMembre($data);
+
+                if($_FILES['avatar']['name'] != null){
+                    $retour = $this->uploadImgProfile('avatar','VIEW/images/avatar_'.$membreUpdate->getId(),1048576,array('png','gif','jpg','jpeg','JPG'));
+
+                    if(!$retour){
+                        $message = 'Image Invalide (taille trop grande ou format incorrect)';
+                        return $this->afficheMonCompte($message);
+                    }
+                }
+
+
 
                 if(!$this->verifEmail($membreUpdate->getCourriel())){
 
@@ -54,9 +67,7 @@ class ControleurMonCompte
             }
         }
 
-
-        $this->afficheMonCompte($message);
-
+        return $this->afficheMonCompte($message);
 
     }
 
@@ -115,4 +126,33 @@ class ControleurMonCompte
 
         return $retour;
     }
+
+
+    /**
+     * Methode pour charger ou changer l'image du compte
+     *
+     * @param $index
+     * @param $destination
+     * @param bool $maxsize
+     * @param bool $extensions
+     * @return bool
+     */
+
+public function uploadImgProfile($index,$destination,$maxsize = false,$extensions= false)
+{
+   //Test1: fichier correctement uploadé
+     if (!isset($_FILES[$index]) OR $_FILES[$index]['error'] > 0) return false;
+   //Test2: taille limite
+     if ($maxsize !== false AND $_FILES[$index]['size'] > $maxsize) return false;
+   //Test3: extension
+     $ext = substr(strrchr($_FILES[$index]['name'],'.'),1);
+     if ($extensions !== false AND !in_array($ext,$extensions)) return false;
+   //Déplacement
+     return move_uploaded_file($_FILES[$index]['tmp_name'],$destination);
+}
+
+
+
+
+
 }

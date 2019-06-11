@@ -19,16 +19,18 @@ require_once 'tools/Autoloader.php';
 $autoload = new Autoloader();
 $autoload->register();
 
-
+//echo '<pre>';
+//var_dump($_SERVER);
+//echo '</pre>';
 
 /************************************
  *
  *  Routeur action
  *
  * ********************************/
+$actionGet = 'accueil';
 
 //check the existence of $_GET['action']
-$actionGet = null;
 
 if (isset($_GET['action'])){
     $actionGet = $_GET['action'];

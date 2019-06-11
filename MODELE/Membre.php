@@ -40,7 +40,7 @@
       */
      public function setNom($nom)
      {
-         $this->_nom = $nom;
+         $this->_nom = strtolower($nom);
      }
 
      /**
@@ -48,7 +48,7 @@
       */
      public function setPrenom($prenom)
      {
-         $this->_prenom = $prenom;
+         $this->_prenom = strtolower($prenom);
      }
 
      /**
