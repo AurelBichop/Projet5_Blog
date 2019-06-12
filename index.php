@@ -25,7 +25,7 @@ $autoload->register();
 
 /************************************
  *
- *  Routeur action
+ *  Routeur action a refactoriser
  *
  * ********************************/
 $actionGet = 'accueil';
