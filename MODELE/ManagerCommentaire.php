@@ -59,4 +59,17 @@ class ManagerCommentaire extends AbstractManager
         $this->executerRequete($sql, array('idCom'=>$idCom));
     }
 
+
+    public function deleteCommentaireBDD($idCommentaire){
+        $idCommentaire = (int)$idCommentaire;
+
+        $commentaire = [
+            'idCommentaire' => $idCommentaire
+        ];
+
+        $sql= 'DELETE FROM commentaire WHERE commentaire.id=:idCommentaire';
+
+        $this->executerRequete($sql, $commentaire);
+    }
+
 }

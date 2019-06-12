@@ -61,7 +61,7 @@ class ControleurBilletAdmin extends ControleurBillet
             $managerBillet = new ManagerBillet();
             $managerBillet->addBilletBDD($billet);
 
-            $message =  'Article Ajouté';
+            $message =  'Article ajouté';
         }
 
         $this->afficheAdminAdd($message);
@@ -100,7 +100,7 @@ class ControleurBilletAdmin extends ControleurBillet
             {
                 $billetUpdate = $this->ObjetBillet($data);
                 $managerBillet->updateBilletBDD($billetUpdate);
-                $message = 'Article Modifié';
+                $message = 'Article modifié';
             }else{
                 $message = CHAMP_VIDE;
             }
@@ -122,7 +122,7 @@ class ControleurBilletAdmin extends ControleurBillet
         $managerBillet = new ManagerBillet();
         $managerBillet->deleteBilletBDD($numBillet);
 
-        $message = 'Article Supprimé';
+        $message = 'Article supprimé';
 
         $this->afficheBilletPagination(5, 'admin/listeBilletsAdmin',$message);
 
@@ -135,7 +135,7 @@ class ControleurBilletAdmin extends ControleurBillet
 
 
         //verifie l'id du billet
-        if (($_GET['action'] === 'admin.billet.commentaire') OR ($_GET['action'] === 'admin.commentaire.update')){
+        if (($_GET['action'] === 'admin.billet.commentaire') OR ($_GET['action'] === 'admin.commentaire.update') OR ($_GET['action'] === 'admin.commentaire.delete')){
             if(!empty($_GET['id'])){
 
                 $idBillet =  $_GET['id'];
@@ -146,7 +146,7 @@ class ControleurBilletAdmin extends ControleurBillet
         $listCom = $managerCommentaire->getCommentaire($idBillet);
 
         if(!$listCom){
-            $message = 'aucun Commentaire a valider pour ce billet';
+            $message = 'Aucun commentaire à valider pour ce billet';
         }
 
         //vue de l'admin des commentaires
@@ -157,6 +157,10 @@ class ControleurBilletAdmin extends ControleurBillet
 
     }
 
+
+    /**
+     * Permet la validation des commentaires
+     */
 
     public function ValidCommentaire(){
 
@@ -179,6 +183,23 @@ class ControleurBilletAdmin extends ControleurBillet
         $this->listCommentaires('Commentaire validé');
     }
 
+
+
+
+    /**
+     * Pour la suppression des commentaires
+     */
+
+    public function commentaireDelete(){
+
+        $numCommentaire = $_POST['id_commentaire'];
+        $managerBillet = new ManagerCommentaire();
+        $managerBillet->deleteCommentaireBDD($numCommentaire);
+
+        $message = 'Commentaire supprimé';
+
+        $this->listCommentaires($message);
+    }
 
     /**
      * @return mixed|null

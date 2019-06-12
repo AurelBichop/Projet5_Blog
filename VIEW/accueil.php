@@ -1,12 +1,14 @@
+<div class="container">
+
 <main role="main">
-    <div class="container">
+
         <?php if($message) :?>
             <div class="alert alert-success"><?php echo $message; ?></div>
         <?php endif;?>
-    </div>
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <div class="container">
+
 
             <h1 class="display-3"><strong><?php echo htmlspecialchars($lastBillet->getChapeau()); ?></strong></h1>
             <p>
@@ -23,11 +25,11 @@
             <p>
                 <?php echo Utils::Lireplus(htmlspecialchars($lastBillet->getContenu())); ?>
             <p><a class="btn btn-primary btn-lg" href="<?php echo './?action=billet&num='.$lastBillet->getId(); ?>" role="button">Lire plus &raquo;</a></p>
-        </div>
+
     </div>
 
 
-    <div class="container">
+
         <!-- Example row of columns -->
         <div class="row">
 

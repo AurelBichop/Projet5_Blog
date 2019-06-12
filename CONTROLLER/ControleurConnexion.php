@@ -60,7 +60,7 @@ class ControleurConnexion
 
                 // Renvoie sur la page d'accueil
                 $controlleurBillet = new ControleurBillet();
-                $message = 'Connexion Reussi';
+                $message = 'Connexion réussi';
                 $controlleurBillet->afficheListeBillet($message);
 
             }else{

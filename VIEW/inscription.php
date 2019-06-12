@@ -13,7 +13,7 @@
             <input type="texte" id="nom" name="nom" value="<?php if(isset($_POST['nom'])){ echo $_POST['nom']; } ?>" class="form-control" placeholder="votre Nom">
         </div><div class="form-group">
             <div class="form-group">
-                <label>Prenom</label> *
+                <label>Prénom</label> *
                 <input type="texte" id="prenom" name="prenom" value="<?php if(isset($_POST['prenom'])){ echo $_POST['prenom']; } ?>" class="form-control" placeholder="votre Prenom">
             </div><div class="form-group">
             <label>Courriel</label> *
@@ -24,7 +24,7 @@
             <input type="password" id="pass" name="password" value="" class="form-control" placeholder="votre mot de passe">
         </div>
         <div class="form-group">
-            <label>Verification du mot de passe</label> *
+            <label>Vérification du mot de passe</label> *
             <input type="password" id="verif" name="verif" value="" class="form-control" placeholder="rentez a nouveau votre mot de passe">
         </div>
         <div class="form-group">

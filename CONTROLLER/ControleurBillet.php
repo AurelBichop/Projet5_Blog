@@ -133,7 +133,7 @@ class ControleurBillet
 
         }
 
-        $message = 'Commentaire envoyé, en Attente de validation';
+        $message = 'Commentaire envoyé, en attente de validation par le modérateur';
 
         if (!empty($_GET['num'])) {
             $this->afficheBilletSelect($_GET['num'],$message);

@@ -4,7 +4,7 @@
         <div class="alert alert-success"><?php echo $message; ?></div>
     <?php endif;?>
 
-<h1>Administrer les Commentaires</h1>
+<h1>Administrer les commentaires</h1>
 
 
 <table class="table">
@@ -25,7 +25,7 @@
             <td>
                 <a class="btn btn-success" href="?action=admin.commentaire.update&id=<?php echo $oneCommentaire->getIdbillet();?>&id_commentaire=<?= $oneCommentaire->getId();?>">Valider</a>
 
-                <form action="?action=admin.commentaire.delete" method="post" style="display:inline">
+                <form action="?action=admin.commentaire.delete&id=<?php echo $oneCommentaire->getIdbillet();?>" method="post" style="display:inline">
 
                     <input type="hidden" name="id_commentaire" value="<?= $oneCommentaire->getId(); ?>">
 

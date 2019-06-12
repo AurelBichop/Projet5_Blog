@@ -41,7 +41,7 @@ class ControleurMonCompte
                     $retour = $this->uploadImgProfile('avatar','VIEW/images/avatar_'.$membreUpdate->getId(),1048576,array('png','gif','jpg','jpeg','JPG'));
 
                     if(!$retour){
-                        $message = 'Image Invalide (taille trop grande ou format incorrect)';
+                        $message = 'Image invalide (taille trop grande ou format incorrect)';
                         return $this->afficheMonCompte($message);
                     }
                 }
@@ -50,7 +50,7 @@ class ControleurMonCompte
 
                 if(!$this->verifEmail($membreUpdate->getCourriel())){
 
-                    $message = 'Merci de bien remplir le champ Courriel';
+                    $message = 'Merci de bien remplir le champ courriel';
                     return $this->afficheMonCompte($message);
                 }
 
@@ -61,7 +61,7 @@ class ControleurMonCompte
 
                 $managerMembre->updateMembre($membreUpdate);
 
-                $message = 'Compte Modifié';
+                $message = 'Compte modifié';
             }else{
                 $message = CHAMP_VIDE;
             }

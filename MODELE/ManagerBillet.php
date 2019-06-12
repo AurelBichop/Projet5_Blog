@@ -177,7 +177,7 @@ class ManagerBillet extends AbstractManager
 
     }
 
-    public function deleteBilletBDD(int $idBillet){
+    public function deleteBilletBDD($idBillet){
 
         $idBillet = (int)$idBillet;
 
@@ -185,6 +185,12 @@ class ManagerBillet extends AbstractManager
             'idBillet' => $idBillet
         ];
 
+        //Suppression des commentaires liée à l'article
+        $sql= 'DELETE FROM commentaire WHERE id_billet=:idBillet';
+
+        $this->executerRequete($sql, $billet);
+
+        //Suppression de l'article
         $sql= 'DELETE FROM billet WHERE billet.id=:idBillet';
 
         $this->executerRequete($sql, $billet);

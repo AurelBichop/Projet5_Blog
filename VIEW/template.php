@@ -8,24 +8,10 @@
     <meta name="generator" content="Jekyll v3.8.5">
     <title><?php echo $titre; ?></title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="http://aurelien-bichotte.fr/projet3/images/logo_fav.png" />
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
 </head>
 
 
@@ -91,14 +77,23 @@
         <div class="col-md-auto">
             | <a href="./?action=accueil">Accueil</a> |
             <a href="./?action=listebillet">Les Billets</a> |
+
             <?php if (!isset($_SESSION['connecte'])) : ?>
-            <a href="./?action=inscription">S'incrire</a> |
-            <a href="./?action=connexion">Se Connecter</a> |
+                <a href="./?action=inscription">S'incrire</a> |
+                <a href="./?action=connexion">Se Connecter</a> |
             <?php endif; ?>
+
             <a href="./?action=contact">Contact</a> |
+
             <?php if (isset($_SESSION['connecte'])) : ?>
+                <a href="./?action=moncompte">Mon Compte</a> |
                 <a href="./?action=deconnexion">Se deconnecter</a> |
             <?php endif; ?>
+
+            <?php if (isset($_SESSION['administrateur']) && ($_SESSION['administrateur']==1)): ?>
+                <a href="./?action=admin.billet">Administrer</a>
+            <?php endif; ?>
+
         </div>
     </div>
 </footer>

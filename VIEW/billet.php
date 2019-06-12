@@ -1,12 +1,14 @@
+<div class="container">
 <main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
+    <div class="col-12">
+        <?php if($message) :?>
+            <div class="alert alert-danger"><?php echo $message; ?></div>
+        <?php endif;?>
 
-            <?php if($message) :?>
-                <div class="alert alert-danger"><?php echo $message; ?></div>
-            <?php endif;?>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <div class="jumbotron">
 
             <h1 class="display-3"><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h1>
             <p>
@@ -25,7 +27,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="col-12">
         <!-- Example row of columns -->
         <div class="row">
                 <div class="col-md-auto">
@@ -87,8 +89,9 @@
 
         <?php endif; ?>
 
-    </div> <!-- /container -->
-
+    </div>
+    <!-- /container -->
+</div>
 
 
 

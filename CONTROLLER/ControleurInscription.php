@@ -46,12 +46,12 @@ class ControleurInscription
         }
 
         if (!$this->verifPass($data['password'],$data['verif'])){
-            $message = 'Les mots de pass sont différents';
+            $message = 'Les mots de passe sont différents';
             return $this->affichePageInscription($message);
         }
 
         if(!$this->verifEmail($data['courriel'])){
-            $message = 'Email invalide ou deja existant';
+            $message = 'Email invalide ou déja existant';
             return $this->affichePageInscription($message);
         }
 
@@ -64,7 +64,7 @@ class ControleurInscription
 
         // Renvoie sur la page d'accueil
         $controlleurBillet = new ControleurConnexion();
-        $message = 'Inscription Réussi, Bienvenue sur notre blog, Merci de vous connecter';
+        $message = 'Inscription réussi, bienvenue sur notre blog, merci de vous connecter';
         return $controlleurBillet->affichePageConnexion($message);
 
     }
