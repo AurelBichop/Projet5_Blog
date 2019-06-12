@@ -124,7 +124,7 @@ class ControleurBilletAdmin extends ControleurBillet
 
         $message = 'Article supprimé';
 
-        $this->afficheBilletPagination(5, 'admin/listeBilletsAdmin',$message);
+        $this->afficheBilletPagination($message);
 
     }
 

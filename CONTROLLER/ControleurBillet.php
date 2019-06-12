@@ -49,7 +49,7 @@ class ControleurBillet
 
         $managerBillet = new ManagerBillet();
 
-        //si c'est dans le controlleur de l'admin
+        //si la methode est appelé dans le controlleur de l'admin
         if(get_called_class()=='ControleurBilletAdmin'){
             $nombreBillets= 5;
             $page= 'admin/listeBilletsAdmin';

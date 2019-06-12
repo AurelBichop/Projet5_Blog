@@ -19,25 +19,134 @@ require_once 'tools/Autoloader.php';
 $autoload = new Autoloader();
 $autoload->register();
 
-//echo '<pre>';
-//var_dump($_SERVER);
-//echo '</pre>';
 
 /************************************
  *
- *  Routeur action a refactoriser
+ *  Routeur action
  *
  * ********************************/
 
+//Ensemble des Controlleurs et leurs methodes
+$listControleur = [
+    'ControleurBillet'=>[
+        'accueil'=>'afficheListeBillet',
+        'listebillets'=>'afficheBilletPagination',
+        'billet'=>'choixBillet',
+        'newcommentaire'=>'addCommentaire'
+    ],
+
+    'ControleurInscription'=>[
+        'inscription'=>'affichePageInscription',
+        'newinscription'=>'enregistreMembre'
+
+    ],'ControleurConnexion'=>[
+        'connexion'=>'affichePageConnexion',
+        'newconnection'=>'testConnexion',
+        'deconnexion'=>'deconnexion'
+    ],
+
+    'ControleurContact'=>[
+    'contact'=>'affichePageContact'
+    ],
+
+    'ControleurMonCompte'=>[
+        'moncompte'=>'afficheMonCompte',
+        'moncompte.update'=>'updateMonCompte'
+    ],
+    'ControleurBilletAdmin'=>[
+        'admin.billet'=>'afficheBilletPagination',
+        'admin.billet.add'=>'BilletAdd',
+        'admin.billet.edit'=>'BilletEdit',
+        'admin.billet.delete'=>'BilletDelete',
+        'admin.billet.commentaire'=>'listCommentaires',
+        'admin.commentaire.update'=>'ValidCommentaire',
+        'admin.commentaire.delete'=>'CommentaireDelete'
+    ]
+
+];
+
+
+//liste des actions lié au controlleur
+$listAction = [
+    'accueil'=>'Billet',
+    'listebillets'=>'Billet',
+    'billet'=>'Billet',
+    'newcommentaire'=>'Billet',
+
+    'inscription'=>'Inscription',
+    'newinscription'=>'Inscription',
+
+    'connexion'=>'Connexion',
+    'newconnection'=>'Connexion',
+    'deconnexion'=>'Connexion',
+
+    'contact'=>'Contact',
+
+    'moncompte'=>'MonCompte',
+    'moncompte.update'=>'MonCompte',
+
+    'admin.billet'=>'BilletAdmin',
+    'admin.billet.add'=>'BilletAdmin',
+    'admin.billet.edit'=>'BilletAdmin',
+    'admin.billet.delete'=>'BilletAdmin',
+    'admin.billet.commentaire'=>'BilletAdmin',
+    'admin.commentaire.update'=>'BilletAdmin',
+    'admin.commentaire.delete'=>'BilletAdmin'
+
+];
+
+
 $actionGet = 'accueil';
 
-//check the existence of $_GET['action']
+//Verifie l'existance de $_GET['action']
 
-if (isset($_GET['action'])){
+if (!empty($_GET['action'])){
     $actionGet = $_GET['action'];
 }
 
+try{
 
+    if (isset($listAction[$actionGet])){
+
+        //construction du controleur
+        $nomControleur = "Controleur".$listAction[$actionGet];
+        $controleur = new $nomControleur();
+
+        //construction de la methode
+        $methode = $listControleur[$nomControleur][$actionGet];
+
+        //appel la methode
+        $controleur->$methode();
+
+    }
+
+
+
+}catch (BilletException $e){
+    $e->getPageError();
+
+}catch (LoginException $e){
+    $e->getLoginError();
+
+}catch (AdminException $e){
+    $e->getLoginAdminError();
+
+}catch (Exception $e){
+    $e->getMessage();
+}
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+  /*
+   * Ancien Routeur
+   ******************************************/
+
+
+/*
 try {
 
     if ($actionGet) {
@@ -107,6 +216,7 @@ try {
                 $controlleurDeconnexion->deconnexion();
                 break;
 
+
             case 'moncompte':
                 $controlleurMembre = new ControleurMonCompte();
                 $controlleurMembre->afficheMonCompte();
@@ -144,7 +254,7 @@ try {
                 $controlleurBilletAdmin->listCommentaires();
                 break;
 
-
+//
             case 'admin.commentaire.update':
                 $controlleurBilletAdmin = new ControleurBilletAdmin();
                 $controlleurBilletAdmin->ValidCommentaire();
@@ -182,7 +292,7 @@ try {
 }catch (Exception $e){
     $e->getMessage();
 }
-
+*/
 
 //var_dump($_SESSION);
 
