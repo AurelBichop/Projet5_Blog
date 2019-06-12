@@ -41,12 +41,20 @@ class ControleurBillet
      * @param string $page
      */
 
-    public function afficheBilletPagination($nombreBillets, $page = 'listeBillets',$message = null){
+    public function afficheBilletPagination($message = null){
 
-        $nombreBillets = (int)$nombreBillets;
+        $page = 'listeBillets';
+
+        $nombreBillets = 3;
 
         $managerBillet = new ManagerBillet();
 
+        //si c'est dans le controlleur de l'admin
+        if(get_called_class()=='ControleurBilletAdmin'){
+            $nombreBillets= 5;
+            $page= 'admin/listeBilletsAdmin';
+        }
+        //:::::::::::::::::::::::::::::::::
 
         $allBillets = $managerBillet->billetPagination($this->pageActuelle($nombreBillets),$nombreBillets);
 

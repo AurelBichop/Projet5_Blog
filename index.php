@@ -28,6 +28,7 @@ $autoload->register();
  *  Routeur action a refactoriser
  *
  * ********************************/
+
 $actionGet = 'accueil';
 
 //check the existence of $_GET['action']
@@ -53,7 +54,7 @@ try {
 
             case 'listebillets':
                 $controlleurListBillet = new ControleurBillet();
-                $controlleurListBillet->afficheBilletPagination('3');
+                $controlleurListBillet->afficheBilletPagination();
                 break;
 
 
@@ -120,7 +121,7 @@ try {
             case 'admin.billet':
 
                 $controlleurBilletAdmin = new ControleurBilletAdmin();
-                $controlleurBilletAdmin->afficheBilletPagination(5, 'admin/listeBilletsAdmin');
+                $controlleurBilletAdmin->afficheBilletPagination();
                 break;
 
             case 'admin.billet.add':
