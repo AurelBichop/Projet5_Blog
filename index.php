@@ -46,7 +46,8 @@ $listControleur = [
     ],
 
     'ControleurContact'=>[
-    'contact'=>'affichePageContact'
+        'contact'=>'affichePageContact',
+        'contact.postEmail'=>'postEmail'
     ],
 
     'ControleurMonCompte'=>[
@@ -81,6 +82,7 @@ $listAction = [
     'deconnexion'=>'Connexion',
 
     'contact'=>'Contact',
+    'contact.postEmail'=>'Contact',
 
     'moncompte'=>'MonCompte',
     'moncompte.update'=>'MonCompte',

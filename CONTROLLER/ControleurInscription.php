@@ -41,6 +41,7 @@ class ControleurInscription
         {
             $data = $_POST;
         }else{
+            var_dump($_POST);
             $message = CHAMP_VIDE;
             return $this->affichePageInscription($message);
         }
@@ -52,6 +53,11 @@ class ControleurInscription
 
         if(!$this->verifEmail($data['courriel'])){
             $message = 'Email invalide ou déja existant';
+            return $this->affichePageInscription($message);
+        }
+
+        if (!$this->verifCaptcha()){
+            $message = 'Merci de cocher le captcha';
             return $this->affichePageInscription($message);
         }
 
@@ -83,7 +89,7 @@ class ControleurInscription
 
         foreach ($post as $a){
 
-                if(strlen(trim($a))<3 OR strlen(trim($a))>30){
+                if(strlen(trim($a))<3 OR strlen(trim($a))>500){
                     $retourPost = true;
             }
         }
@@ -131,6 +137,33 @@ class ControleurInscription
          }
 
          return $retour;
+    }
+
+    /**
+     * Verification du captcha
+     * @return bool
+     */
+    private function verifCaptcha(){
+
+        $retour = false;
+        // Ma clé privée
+        $secret = "6Ld-0qgUAAAAAOT8-N-eUSCLdXUS_06EkCf7Elhr";
+        // Paramètre renvoyé par le recaptcha
+        $response = $_POST['g-recaptcha-response'];
+
+
+        $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+            . $secret
+            . "&response=" . $response;
+
+
+        $decode = json_decode(file_get_contents($api_url), true);
+
+        if ($decode['success'] == true) {
+            $retour = true;
+        }
+
+        return $retour;
     }
 
 }
