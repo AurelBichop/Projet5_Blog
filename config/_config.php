@@ -12,3 +12,11 @@ define ('PASSWORD', 'MDPBDD');
 /**Contante Pour les lmessage d'erreur dans les champs**/
 
 define('CHAMP_VIDE','Merci de Bien renseigner tous les Champs');
+
+
+/**
+ * Clef secrete pour les captchas Google
+ */
+
+define('CLEF_CLIENT','Votre clef client');
+define('CLEF_SERVEUR','Votre clef serveur');

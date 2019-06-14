@@ -28,7 +28,7 @@
             <input type="password" id="verif" name="verif" value="" class="form-control" placeholder="rentez a nouveau votre mot de passe">
         </div>
             <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6Ld-0qgUAAAAAGT5GsEnGEX_unWvYPHcXIrMlleS"></div>
+                <div class="g-recaptcha" data-sitekey="<?php echo CLEF_CLIENT; ?>"></div>
             </div>
         <div class="form-group">
             <button type=submit class="btn btn-primary">S'incrire</button>

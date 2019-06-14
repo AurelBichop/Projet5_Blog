@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="6Ld-0qgUAAAAAGT5GsEnGEX_unWvYPHcXIrMlleS"></div>
+                                <div class="g-recaptcha" data-sitekey="<?php echo CLEF_CLIENT; ?>"></div>
                             </div>
 
                             <div class="mx-auto">

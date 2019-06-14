@@ -95,7 +95,7 @@ class ControleurContact
         $retour = false;
 
         // Ma clé privée
-        $secret = "6Ld-0qgUAAAAAOT8-N-eUSCLdXUS_06EkCf7Elhr";
+        $secret = CLEF_SERVEUR;
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
 
