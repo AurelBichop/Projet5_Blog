@@ -13,6 +13,7 @@ class ControleurConnexion
      * Affiche la page connexion
      *
      * @param null $message
+     * @throws Exception
      */
 
     public function affichePageConnexion($message = null)
@@ -31,9 +32,9 @@ class ControleurConnexion
     /**
      * Verifie que les informations de connection existent
      *
+     * @throws BilletException
      * @throws LoginException
      */
-
     public function testConnexion(){
 
         if (!empty($_POST['login']) && (!empty($_POST['password']))) {
@@ -99,7 +100,7 @@ class ControleurConnexion
         
         // Renvoie sur la page d'accueil
         $controlleurBillet = new ControleurBillet();
-        $message = 'Deconnexion Reussi';
+        $message = 'Déconnexion réussie';
         $controlleurBillet->afficheListeBillet($message);
     }
 

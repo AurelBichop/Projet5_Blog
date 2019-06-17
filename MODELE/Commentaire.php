@@ -39,7 +39,7 @@ class Commentaire
     /**
      * @param $id_billet
      */
-    public function setIdbillet($id_billet)
+    public function setIdBillet($id_billet)
     {
         $this->_id_billet = $id_billet;
     }
@@ -47,7 +47,7 @@ class Commentaire
     /**
      * @param $id_membre
      */
-    public function setIdmembre($id_membre)
+    public function setIdMembre($id_membre)
     {
         $this->_id_membre = $id_membre;
     }
@@ -106,7 +106,7 @@ class Commentaire
     /**
      * @return mixed
      */
-    public function getIdmembre()
+    public function getIdMembre()
     {
         return $this->_id_membre;
     }

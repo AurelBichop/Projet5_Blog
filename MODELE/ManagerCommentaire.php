@@ -26,7 +26,7 @@ class ManagerCommentaire extends AbstractManager
                 ON C.id_membre = M.id
                 WHERE C.id_billet=:id
                 AND C.validation=:validation
-                ORDER BY C.id DESC";
+                ORDER BY C.id";
 
         $billet = [
             'id' => $idBillet,
@@ -55,8 +55,8 @@ class ManagerCommentaire extends AbstractManager
         if ($commentaire->getIdbillet() !== null)
         {
             $dataCommentaire = array(
-                'idBillet'=>$commentaire->getIdbillet(),
-                'idMembre'=>$commentaire->getIdmembre(),
+                'idBillet'=>$commentaire->getIdBillet(),
+                'idMembre'=>$commentaire->getIdMembre(),
                 'contenu'=>$commentaire->getContenu()
             );
 
