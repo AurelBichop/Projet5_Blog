@@ -9,7 +9,7 @@ define ('USER', 'UserBDD');
 define ('PASSWORD', 'MDPBDD');
 
 
-/**Contante Pour les lmessage d'erreur dans les champs**/
+/**Contante Pour les messages d'erreur dans les champs vide **/
 
 define('CHAMP_VIDE','Merci de Bien renseigner tous les Champs');
 

@@ -1,9 +1,20 @@
 <?php
 
-
+/**
+ * Classe Pour manager les commentaire en Base de données,
+ * Cette classe herite de la classe abstraite AbstractManager
+ *
+ */
 class ManagerCommentaire extends AbstractManager
 {
 
+    /**
+     * Récupere les commentaires valide pour un article choisi
+     *
+     * @param $idBillet
+     * @param int $valid
+     * @return array
+     */
     public function getCommentaire($idBillet, int $valid = 0)
     {
 
@@ -33,6 +44,11 @@ class ManagerCommentaire extends AbstractManager
 
     }
 
+    /**
+     * Enregistre le commentaire non validé
+     *
+     * @param Commentaire $commentaire
+     */
     public function addComBDD(Commentaire $commentaire)
     {
 
@@ -50,6 +66,11 @@ class ManagerCommentaire extends AbstractManager
 
     }
 
+    /**
+     * Change l'etat du commentaire
+     *
+     * @param $idCom
+     */
     public function updateCom($idCom){
 
         $idCom = (int)$idCom;
@@ -59,7 +80,11 @@ class ManagerCommentaire extends AbstractManager
         $this->executerRequete($sql, array('idCom'=>$idCom));
     }
 
-
+    /**
+     * Supprime le commentaire choisi
+     *
+     * @param $idCommentaire
+     */
     public function deleteCommentaireBDD($idCommentaire){
         $idCommentaire = (int)$idCommentaire;
 

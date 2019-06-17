@@ -1,6 +1,6 @@
 <?php
 /**
- * Class For Exception
+ * Class pour les exceptions de billet inexistant
  *
  */
 

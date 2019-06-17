@@ -1,9 +1,14 @@
 <?php
 
+/**
+ * Class Billet
+ * Permet de représenter l'entité Billet
+ */
+
 class Billet
 
 {
-    use Hydrate;
+    use Hydrate; // trait pour l'hydratation de l'objet
 
     private $_id;
     private $_id_membre;
@@ -31,12 +36,17 @@ class Billet
 
     }
 
+    /**
+     * @param $id
+     */
     public function setId($id)
     {
         $this->_id = $id;
     }
 
-
+    /**
+     * @param $id_membre
+     */
     public function setIdmembre($id_membre)
     {
         $this->_id_membre = $id_membre;
@@ -132,6 +142,8 @@ class Billet
     }
 
     /**
+     * Renvoie la date formaté
+     *
      * @return string
      * @throws Exception
      */

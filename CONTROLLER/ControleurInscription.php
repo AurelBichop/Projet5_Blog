@@ -1,9 +1,16 @@
 <?php
-
+/**
+ * Class ControleurInscription
+ * Pour l'inscription d'un nouveau membre
+ */
 
 class ControleurInscription
 
 {
+    /**
+     * Affiche la page inscription
+     * @param null $message
+     */
 
     public function affichePageInscription($message = null)
     {
@@ -20,9 +27,12 @@ class ControleurInscription
     }
 
     /**
+     * Pour la création d'un Objet membre avec un tableau
+     *
      * @param array $data
      * @return Membre
      */
+
     public function addObjetMembre(array $data)
     {
         $nouveauMembre = new Membre($data);

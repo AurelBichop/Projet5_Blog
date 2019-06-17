@@ -1,9 +1,12 @@
 <?php
-
+/**
+ * Class Membre
+ * Permet de représenter l'entité membre
+ */
 
  class Membre
  {
-     use Hydrate;
+     use Hydrate; // trait pour l'hydratation de l'objet
 
      private $_id;
      private $_is_administrateur;
@@ -14,6 +17,10 @@
      private $_date_inscription;
 
 
+     /**
+      * Membre constructor.
+      * @param array $donnees
+      */
      public function __construct(array $donnees)
      {
          $this->hydrate($donnees);

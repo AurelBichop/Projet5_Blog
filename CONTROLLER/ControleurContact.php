@@ -1,9 +1,18 @@
 <?php
-
+/**
+ * Class ControleurContact
+ * Pour la page contact avec la possibilité de l'envoie d'un mail
+ */
 
 class ControleurContact
 
 {
+
+    /**
+     * Affiche la page contact
+     *
+     * @param null $message
+     */
 
     public function affichePageContact($message = null)
     {
@@ -19,8 +28,9 @@ class ControleurContact
     }
 
     /**
-     * Methode d'envoi de mail
+     * Methode pour l'envoi de mail
      */
+
     public function postEmail(){
 
         $data = $_POST;
@@ -59,7 +69,8 @@ class ControleurContact
 
     /**
      * Permet la vérification des champs pour le contact par email
-     * @param array $data
+     *
+     * @param array $data // tableau avec les champs du formulaire
      * @return array
      */
 
@@ -87,7 +98,8 @@ class ControleurContact
     }
 
     /**
-     * Verification du captcha
+     * Permet la vérification du captcha
+     *
      * @return bool
      */
     private function verifCaptcha(){

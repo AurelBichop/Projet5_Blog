@@ -1,8 +1,18 @@
 <?php
+/**
+ * Class ManagerMembre
+ * Pour manager les membres en Base de données,
+ * Cette classe herite de la classe abstraite AbstractManager
+ */
 
 class ManagerMembre extends AbstractManager
 {
 
+    /**
+     * Permet d'obtenir un tableau avec tout les membre déja enregistré
+     *
+     * @return array // avec les objets membres
+     */
     public function getMembres()
     {
 
@@ -18,6 +28,10 @@ class ManagerMembre extends AbstractManager
 
     }
 
+    /**
+     * Ajoute un membre
+     * @param membre $membre
+     */
     public function addBDD(membre $membre)
     {
 
@@ -32,7 +46,13 @@ class ManagerMembre extends AbstractManager
         $this->executerRequete($sql, $dataMembre);
     }
 
-
+    /**
+     * Recupere un membre avec son adresse de Courriel
+     *
+     * @param $dataMail
+     * @return Membre
+     * @throws LoginException
+     */
     public function getOneMembre($dataMail)
     {
         $sql = "SELECT * FROM membre WHERE courriel=:mail";
@@ -54,7 +74,12 @@ class ManagerMembre extends AbstractManager
         return $membre;
     }
 
-
+    /**
+     * Verifie que le courriel n'est pas déja enregistré
+     *
+     * @param $email
+     * @return bool
+     */
     public function verifMail($email){
 
         $sql = "SELECT courriel FROM membre WHERE courriel=:mail";
@@ -73,6 +98,11 @@ class ManagerMembre extends AbstractManager
         return false;
     }
 
+    /**
+     * Pour mettre a jour les informations d'un membre
+     *
+     * @param Membre $membre
+     */
     public function updateMembre(Membre $membre){
 
         $dataMembre = array(

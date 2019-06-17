@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Class LoginException
+ * Pour la gestion d'une exception à la connexion d'un membre
+ */
 
 class LoginException extends Exception
 {

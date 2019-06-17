@@ -1,10 +1,13 @@
 <?php
 
-
+/**
+ * Class Commentaire
+ * Permet de représenter l'entité Commentaire
+ */
 class Commentaire
 
 {
-    use Hydrate;
+    use Hydrate; // trait pour l'hydratation de l'objet
 
     private $_id;
     private $_id_billet;
@@ -25,16 +28,25 @@ class Commentaire
         $this->hydrate($donnees);
     }
 
+    /**
+     * @param $id
+     */
     public function setId($id)
     {
         $this->_id = $id;
     }
 
+    /**
+     * @param $id_billet
+     */
     public function setIdbillet($id_billet)
     {
         $this->_id_billet = $id_billet;
     }
 
+    /**
+     * @param $id_membre
+     */
     public function setIdmembre($id_membre)
     {
         $this->_id_membre = $id_membre;
@@ -83,13 +95,17 @@ class Commentaire
         return $this->_id;
     }
 
-
+    /**
+     * @return mixed
+     */
     public function getIdbillet()
     {
         return $this->_id_billet;
     }
 
-
+    /**
+     * @return mixed
+     */
     public function getIdmembre()
     {
         return $this->_id_membre;
@@ -120,6 +136,8 @@ class Commentaire
     }
 
     /**
+     * Renvoie la date formaté
+     *
      * @return string
      * @throws Exception
      */

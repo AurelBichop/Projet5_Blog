@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Class ControleurMonCompte
+ * Controleur pour la gestion des information de son compte
+ */
 
 class ControleurMonCompte
 {
@@ -22,7 +25,9 @@ class ControleurMonCompte
         $vue->generer(array('membre'=>$membre,'message'=>$message));
     }
 
-
+    /**
+     * Pour changer les informations de son compte
+     */
     public function updateMonCompte(){
 
         $data=$_POST;
@@ -128,8 +133,9 @@ class ControleurMonCompte
     }
 
 
+
     /**
-     * Methode pour charger ou changer l'image du compte
+     * Methode pour charger l'image du compte
      *
      * @param $index
      * @param $destination

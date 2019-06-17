@@ -1,8 +1,19 @@
 <?php
 
+/**
+ * Class ControleurBillet
+ * Controleur pour les billets et commentaires du blog
+ */
 
 class ControleurBillet
 {
+
+    /**
+     * Affiche les derniers billets
+     *
+     * @param null $message // Variable pour l'affiche de message dans la vue
+     * @throws BilletException
+     */
 
     public function afficheListeBillet($message = null)
     {
@@ -34,11 +45,12 @@ class ControleurBillet
 
     }
 
+
     /**
      * Affichage de la liste de tous les billets paginé
-
-     * @param $nombreBillets
-     * @param string $page
+     *
+     * @param null $message // Variable pour l'affiche de message dans la vue
+     *
      */
 
     public function afficheBilletPagination($message = null){
@@ -72,6 +84,7 @@ class ControleurBillet
 
     /**
      * Affiche le billet selectionné
+     *
      * @param $id_billet
      * @throws BilletException
      */
@@ -90,7 +103,7 @@ class ControleurBillet
         $BilletSelect = $managerBillets->getBilletSelect($id_billet);
 
 
-        //Affiche les commentaires avec validation
+        //Affiche les commentaires validé par l'administrateur
         $commentairesBilletSelect = $managerCommentaire->getCommentaire($BilletSelect->getID(),1);
 
 
@@ -151,6 +164,7 @@ class ControleurBillet
 
     /**
      * Affiche le billet choisi
+     *
      * @throws BilletException
      */
 
@@ -165,8 +179,9 @@ class ControleurBillet
 
     /**
      * Calcule avec un arrondie supérieur le nombre de pages
+     *
      * @param $nbBilletsParpage
-     * @return float
+     * @return float // nombre de page arrondie au nombre supérieur
      */
 
     public function nbDePages($nbBilletsParpage){
@@ -179,7 +194,7 @@ class ControleurBillet
     }
 
     /**
-     * Permet de recupere la page actuel en renvoie le premier limit
+     * Permet de recupere la page actuel en renvoie le premier limit pour la requete SQL du manager Billet
      * @param $nombreBillets
      * @return float|int
      */
@@ -197,6 +212,7 @@ class ControleurBillet
 
     /**
      * Verifie la page sur laquelle nous sommes
+     *
      * @param $nombreBillets
      * @return float|int
      */
@@ -226,9 +242,10 @@ class ControleurBillet
      * Verifie que les Champs soient rempli
      * avec Minimum de 3 caracteres
      *
-     * @param array $post
+     * @param array $post // champ du commentaire
      * @return bool
      */
+
     private function verifPost($postCom){
 
         $retourPost = false;

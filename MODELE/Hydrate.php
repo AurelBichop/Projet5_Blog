@@ -1,6 +1,7 @@
 <?php
 /**
  * trait Hydrate
+ * pour l'hydratation d'objets avec un tableau associatif
  */
 
 trait Hydrate

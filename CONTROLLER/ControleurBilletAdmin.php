@@ -1,8 +1,19 @@
 <?php
 
+/**
+ * Class ControleurBilletAdmin
+ * Controleur pour la gestion des billets et commentaires du blog
+ */
 
 class ControleurBilletAdmin extends ControleurBillet
 {
+
+    /**
+     * ControleurBilletAdmin constructor.
+     * Avec vérification de la connection de l'administrateur
+     *
+     * @throws AdminException
+     */
 
     public function __construct()
     {
@@ -12,6 +23,7 @@ class ControleurBilletAdmin extends ControleurBillet
         }
 
     }
+
 
     /**
      * Verifie que l'administrateur est bien connecté
@@ -38,8 +50,10 @@ class ControleurBilletAdmin extends ControleurBillet
         $vue->generer(array('message'=>$message));
     }
 
+
     /**
-     * Fonction pour l'ajout d'un article
+     * Pour l'ajout d'un article
+     *
      * @throws BilletException
      */
     public function BilletAdd(){
@@ -84,6 +98,8 @@ class ControleurBilletAdmin extends ControleurBillet
 
     /**
      * Pour l'update d'un article
+     *
+     * @throws BilletException
      */
 
     public function BilletEdit(){
@@ -115,6 +131,9 @@ class ControleurBilletAdmin extends ControleurBillet
         $vue->generer(array('message'=>$message,'billet'=>$billetSelect));
     }
 
+    /**
+     * Pour la suppression d'un article
+     */
 
     public function BilletDelete(){
 
@@ -127,6 +146,12 @@ class ControleurBilletAdmin extends ControleurBillet
         $this->afficheBilletPagination($message);
 
     }
+
+
+    /**
+     * Affiche les commentaire non validé pour un article choisi
+     * @param null $message
+     */
 
     public function listCommentaires($message = null){
 
@@ -202,6 +227,8 @@ class ControleurBilletAdmin extends ControleurBillet
     }
 
     /**
+     * Vérifie que le Billet existe dans l'interface administrateur
+     *
      * @return mixed|null
      */
     private function VerifIdBillet(){
@@ -219,7 +246,7 @@ class ControleurBilletAdmin extends ControleurBillet
 
     /**
      * Verifie que les Champs soient rempli
-     * avec Minimum de 5 caracteres
+     * avec Minimum de 5 caractères
      *
      * @param array $post
      * @return bool

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class For Exception
+ * Class pour l'affichage d'une exception a la connexion de l'inface administrateur
  *
  */
 

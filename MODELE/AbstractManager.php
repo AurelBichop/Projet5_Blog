@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class AbstractManager
+ * Gere la connection a la base de données ainsi que l'envoie des requetes
+ */
 
 abstract class AbstractManager
 
@@ -11,7 +14,14 @@ abstract class AbstractManager
 
     private $_bdd;
 
-    // Exécute une requête SQL éventuellement paramétrée
+
+
+    /**
+     * Exécute une requête SQL éventuellement paramétrée
+     * @param $sql
+     * @param null $params
+     * @return bool|false|PDOStatement
+     */
     protected function executerRequete($sql, $params = null) {
 
         if ($params == null) {
@@ -29,10 +39,12 @@ abstract class AbstractManager
         return $resultat;
     }
 
-    /**
-     * @return PDO dans l'attribut privé $_bdd pour se connecter et l'initialise si besoin
-     */
 
+    /**
+     * Retourne $_bdd pour se connecter et l'initialise si besoin
+     *
+     * @return objet|PDO
+     */
     private function getBDD()
     {
         if ($this->_bdd == null)

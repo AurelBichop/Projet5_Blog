@@ -1,7 +1,7 @@
 <?php
 /**
- * Classe Pour manager les billets en Bdd qui herite de la classe abstraite AbstractManager
- *
+ * Classe Pour manager les billets en Base de données,
+ * cette dernière herite de la classe abstraite AbstractManager
  */
 
 
@@ -9,9 +9,12 @@ class ManagerBillet extends AbstractManager
 {
 
     /**
-     * @param int $debut
-     * @param int $fin
-     * @return object
+     * Récupere les billets
+     *
+     * @param int|null $debut // Pour la pagination
+     * @param int|null $fin // Pour la pagination
+     * @return array
+     * @throws BilletException
      */
 
     public function getBillets(int $debut = null, int $fin = null)
@@ -44,6 +47,8 @@ class ManagerBillet extends AbstractManager
 
 
     /**
+     * Recupere les derniers billet
+     *
      * @return Billet
      * @throws BilletException
      */
@@ -70,8 +75,11 @@ class ManagerBillet extends AbstractManager
 
 
     /**
-     * @param int $id_billet
-     * @return object
+     * Récupere le Billet par son id et retourne un objet Billet
+     *
+     * @param int $id_billet // id du billet
+     * @return Billet
+     * @throws BilletException
      */
 
     public function getBilletSelect(int $id_billet)
@@ -98,6 +106,11 @@ class ManagerBillet extends AbstractManager
 
     }
 
+    /**
+     * Requete pour obtenir l'ensemble des Billets
+     *
+     * @return string
+     */
 
     private function listAllBillet(){
 
@@ -111,6 +124,11 @@ class ManagerBillet extends AbstractManager
         return $sql;
     }
 
+    /**
+     * Pour connaitre le nombre de billets
+     *
+     * @return int
+     */
 
     public function nbBillets(){
 
@@ -123,6 +141,14 @@ class ManagerBillet extends AbstractManager
         return $nbBilletsInt;
     }
 
+    /**
+     * Recupere les billets pour la pagination
+     *
+     * @param $premiereEntre
+     * @param $billetsParPage
+     * @return array
+     * @throws BilletException
+     */
     public function billetPagination($premiereEntre, $billetsParPage){
 
         $sql = $this->listAllBillet();
@@ -144,6 +170,11 @@ class ManagerBillet extends AbstractManager
         return $objetBillet;
     }
 
+    /**
+     * Pour l'ajout d'un nouveau billet
+     *
+     * @param Billet $billet
+     */
     public function addBilletBDD(Billet $billet)
     {
 
@@ -159,7 +190,11 @@ class ManagerBillet extends AbstractManager
 
     }
 
-
+    /**
+     * Pour mettre à jour un Billet
+     *
+     * @param Billet $billet
+     */
     public function updateBilletBDD(Billet $billet)
     {
 
@@ -177,6 +212,11 @@ class ManagerBillet extends AbstractManager
 
     }
 
+    /**
+     * Pour la suppression d'un Billet
+     *
+     * @param $idBillet
+     */
     public function deleteBilletBDD($idBillet){
 
         $idBillet = (int)$idBillet;

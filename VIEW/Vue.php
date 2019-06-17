@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Vue
+ * Permet l'affichage des Vues du blog
+ */
 Class Vue
 
 {
@@ -15,7 +19,13 @@ Class Vue
 
     }
 
-    // Génère et affiche la vue
+
+    /**
+     * Génère et affiche la vue
+     *
+     * @param $donneeMethodeGenerer
+     * @throws Exception
+     */
     public function generer($donneeMethodeGenerer) {
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donneeMethodeGenerer);
@@ -26,7 +36,14 @@ Class Vue
         echo $vue;
     }
 
-    // Génère un fichier vue et renvoie le résultat produit
+
+    /**
+     * Génère un fichier vue et renvoie le résultat produit
+     * @param $fichier
+     * @param $donneMethodeGenererFichier
+     * @return false|string
+     * @throws Exception
+     */
     private function genererFichier($fichier, $donneMethodeGenererFichier) {
         if (file_exists($fichier)) {
             // Rend les éléments du tableau $donnees accessibles dans la vue
@@ -47,6 +64,8 @@ Class Vue
     }
 
     /**
+     * Pour le titre de la page
+     *
      * @param string $titre
      * return void
      */

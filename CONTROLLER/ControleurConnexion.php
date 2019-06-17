@@ -1,8 +1,19 @@
 <?php
 
+/**
+ * Class ControleurConnexion
+ * Pour la connexion des membres inscrits
+ */
+
 class ControleurConnexion
 
 {
+
+    /**
+     * Affiche la page connexion
+     *
+     * @param null $message
+     */
 
     public function affichePageConnexion($message = null)
     {
@@ -16,6 +27,12 @@ class ControleurConnexion
         $vue->generer(array('details'=>'Voir détails &raquo;','message'=>$message));
 
     }
+
+    /**
+     * Verifie que les informations de connection existent
+     *
+     * @throws LoginException
+     */
 
     public function testConnexion(){
 
@@ -32,13 +49,13 @@ class ControleurConnexion
     }
 
 
-
-     /**
-     * Permet la connection apres vérification
+    /**
+     * Permet la connection au blog
      *
-     * @param $dataNom
+     * @param $dataLogin
      * @param $dataPass
-     *
+     * @throws BilletException
+     * @throws LoginException
      */
 
     public function connexion($dataLogin, $dataPass){
@@ -69,6 +86,12 @@ class ControleurConnexion
         }
     }
 
+
+    /**
+     * Pour la deconnexion du membre
+     *
+     * @throws BilletException
+     */
     public function deconnexion()
     {
         session_destroy();
@@ -80,6 +103,13 @@ class ControleurConnexion
         $controlleurBillet->afficheListeBillet($message);
     }
 
+    /**
+     * Vérifie le mot de passe du membre
+     *
+     * @param $member
+     * @param $password
+     * @return bool
+     */
     public function verifOneMembre($member, $password){
 
         $connexion = false;
