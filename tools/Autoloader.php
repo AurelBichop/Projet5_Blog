@@ -18,8 +18,9 @@ class Autoloader
 
         }elseif (strstr($class_name,'Vue')){
             require_once 'VIEW/'.$class_name.'.php';
-        }
-        else{
+        }elseif(strrpos($class_name,'Exception')){
+            require_once 'tools/'.$class_name.'.php';
+        }else{
             require_once 'MODELE/'.$class_name.'.php';
         }
     }

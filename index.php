@@ -4,13 +4,7 @@ session_start();
 require_once 'config/config.php';
 require_once 'debug/Debug.php';
 require_once 'tools/Utils.php';
-
-//A faire avec l'autoloader
-require_once 'tools/BilletException.php';
-require_once 'tools/LoginException.php';
-require_once 'tools/AdminException.php';
 require_once 'tools/Autoloader.php';
-
 
 
 
