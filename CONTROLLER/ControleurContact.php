@@ -47,7 +47,7 @@ class ControleurContact
          $headers = 'FROM:'.$_POST['email'];
          $message = $_POST['message'];
 
-         mail('aurelien.bichotte@aurelien-bichotte.fr','Formulaire de contactdu blog par '.$_POST['name'],$message,$headers);
+         mail('aurelien.bichotte@aurelien-bichotte.fr','Formulaire de contact du blog par '.$_POST['name'],$message,$headers);
 
          $message = 'mail envoyé';
 

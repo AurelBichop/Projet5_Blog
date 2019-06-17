@@ -41,7 +41,6 @@ class ControleurInscription
         {
             $data = $_POST;
         }else{
-            var_dump($_POST);
             $message = CHAMP_VIDE;
             return $this->affichePageInscription($message);
         }

@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <label>Vérification du mot de passe</label> *
-            <input type="password" id="verif" name="verif" value="" class="form-control" placeholder="rentez a nouveau votre mot de passe">
+            <input type="password" id="verif" name="verif" value="" class="form-control" placeholder="rentrez à nouveau votre mot de passe">
         </div>
             <div class="form-group">
                 <div class="g-recaptcha" data-sitekey="<?php echo CLEF_CLIENT; ?>"></div>

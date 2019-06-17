@@ -27,73 +27,73 @@ $autoload->register();
  * ********************************/
 
 //Ensemble des Controlleurs et leurs methodes
-$listControleur = [
-    'ControleurBillet'=>[
-        'accueil'=>'afficheListeBillet',
-        'listebillets'=>'afficheBilletPagination',
-        'billet'=>'choixBillet',
-        'newcommentaire'=>'addCommentaire'
-    ],
+//$listControleur = [
+//    'ControleurBillet'=>[
+//        'accueil'=>'afficheListeBillet',
+//        'listebillets'=>'afficheBilletPagination',
+//        'billet'=>'choixBillet',
+//        'newcommentaire'=>'addCommentaire'
+//    ],
+//
+//    'ControleurInscription'=>[
+//        'inscription'=>'affichePageInscription',
+//        'newinscription'=>'enregistreMembre'
+//
+//    ],'ControleurConnexion'=>[
+//        'connexion'=>'affichePageConnexion',
+//        'newconnection'=>'testConnexion',
+//        'deconnexion'=>'deconnexion'
+//    ],
+//
+//    'ControleurContact'=>[
+//        'contact'=>'affichePageContact',
+//        'contact.postEmail'=>'postEmail'
+//    ],
+//
+//    'ControleurMonCompte'=>[
+//        'moncompte'=>'afficheMonCompte',
+//        'moncompte.update'=>'updateMonCompte'
+//    ],
+//    'ControleurBilletAdmin'=>[
+//        'admin.billet'=>'afficheBilletPagination',
+//        'admin.billet.add'=>'BilletAdd',
+//        'admin.billet.edit'=>'BilletEdit',
+//        'admin.billet.delete'=>'BilletDelete',
+//        'admin.billet.commentaire'=>'listCommentaires',
+//        'admin.commentaire.update'=>'ValidCommentaire',
+//        'admin.commentaire.delete'=>'CommentaireDelete'
+//    ]
+//
+//];
 
-    'ControleurInscription'=>[
-        'inscription'=>'affichePageInscription',
-        'newinscription'=>'enregistreMembre'
 
-    ],'ControleurConnexion'=>[
-        'connexion'=>'affichePageConnexion',
-        'newconnection'=>'testConnexion',
-        'deconnexion'=>'deconnexion'
-    ],
-
-    'ControleurContact'=>[
-        'contact'=>'affichePageContact',
-        'contact.postEmail'=>'postEmail'
-    ],
-
-    'ControleurMonCompte'=>[
-        'moncompte'=>'afficheMonCompte',
-        'moncompte.update'=>'updateMonCompte'
-    ],
-    'ControleurBilletAdmin'=>[
-        'admin.billet'=>'afficheBilletPagination',
-        'admin.billet.add'=>'BilletAdd',
-        'admin.billet.edit'=>'BilletEdit',
-        'admin.billet.delete'=>'BilletDelete',
-        'admin.billet.commentaire'=>'listCommentaires',
-        'admin.commentaire.update'=>'ValidCommentaire',
-        'admin.commentaire.delete'=>'CommentaireDelete'
-    ]
-
-];
-
-
-//liste des actions lié au controlleur
+//liste des actions lié au controlleur et a la methode associé
 $listAction = [
-    'accueil'=>'Billet',
-    'listebillets'=>'Billet',
-    'billet'=>'Billet',
-    'newcommentaire'=>'Billet',
+    'accueil'=>['Billet','afficheListeBillet'],
+    'listebillets'=>['Billet','afficheBilletPagination'],
+    'billet'=>['Billet','choixBillet'],
+    'newcommentaire'=>['Billet','addCommentaire'],
 
-    'inscription'=>'Inscription',
-    'newinscription'=>'Inscription',
+    'inscription'=>['Inscription','affichePageInscription'],
+    'newinscription'=>['Inscription','enregistreMembre'],
 
-    'connexion'=>'Connexion',
-    'newconnection'=>'Connexion',
-    'deconnexion'=>'Connexion',
+    'connexion'=>['Connexion','affichePageConnexion'],
+    'newconnection'=>['Connexion','testConnexion'],
+    'deconnexion'=>['Connexion','deconnexion'],
 
-    'contact'=>'Contact',
-    'contact.postEmail'=>'Contact',
+    'contact'=>['Contact','affichePageContact'],
+    'contact.postEmail'=>['Contact','postEmail'],
 
-    'moncompte'=>'MonCompte',
-    'moncompte.update'=>'MonCompte',
+    'moncompte'=>['MonCompte','afficheMonCompte'],
+    'moncompte.update'=>['MonCompte','updateMonCompte'],
 
-    'admin.billet'=>'BilletAdmin',
-    'admin.billet.add'=>'BilletAdmin',
-    'admin.billet.edit'=>'BilletAdmin',
-    'admin.billet.delete'=>'BilletAdmin',
-    'admin.billet.commentaire'=>'BilletAdmin',
-    'admin.commentaire.update'=>'BilletAdmin',
-    'admin.commentaire.delete'=>'BilletAdmin'
+    'admin.billet'=>['BilletAdmin','afficheBilletPagination'],
+    'admin.billet.add'=>['BilletAdmin','BilletAdd'],
+    'admin.billet.edit'=>['BilletAdmin','BilletEdit'],
+    'admin.billet.delete'=>['BilletAdmin','BilletDelete'],
+    'admin.billet.commentaire'=>['BilletAdmin','listCommentaires'],
+    'admin.commentaire.update'=>['BilletAdmin','ValidCommentaire'],
+    'admin.commentaire.delete'=>['BilletAdmin','CommentaireDelete']
 
 ];
 
@@ -111,11 +111,12 @@ try{
     if (isset($listAction[$actionGet])){
 
         //construction du controleur
-        $nomControleur = "Controleur".$listAction[$actionGet];
+        $nomControleur = "Controleur".$listAction[$actionGet][0];
         $controleur = new $nomControleur();
 
         //construction de la methode
-        $methode = $listControleur[$nomControleur][$actionGet];
+        $methode = $listAction[$actionGet][1];
+
 
         //appel la methode
         $controleur->$methode();
