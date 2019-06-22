@@ -1,4 +1,4 @@
-<div class="container mb-4">
+<div class="container">
     <?php if($message) :?>
         <div class="alert alert-success"><?php echo $message; ?></div>
     <?php endif;?>

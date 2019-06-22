@@ -52,9 +52,10 @@
                     <em><?php echo 'Le '.$com->getDate(); ?></em>
                     <div class="alert">
 
-                        <img src="VIEW/images/avatar_<?php echo $com->getIdMembre(); ?>" class="img-thumbnail" width="10%" height="10%" alt="Pas de photos" />
+                        <img src="VIEW/images/avatar_<?php echo $com->getIdMembre(); ?>" class="img-thumbnail" id="photo_compte" alt="Pas de photos" />
 
-                        <?php echo nl2br(htmlspecialchars($com->getContenu())); ?>
+                        <p><?php echo nl2br(htmlspecialchars($com->getContenu())); ?></p>
+
                     </div>
 
                 </div>

@@ -11,6 +11,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="http://aurelien-bichotte.fr/projet3/images/logo_fav.png" />
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- CSS aditionnel -->
+    <link rel="stylesheet" type="text/css" href="VIEW/css/style.css" />
+
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
