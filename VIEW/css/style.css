@@ -1,5 +1,5 @@
 
-#photo_compte
+.photo_compte
 {
     width:10%;
     height:10%;
@@ -8,7 +8,7 @@
 
 @media (max-width:900px)
 {
-    #photo_compte
+    .photo_compte
     {
         width:20%;
         height:20%;
@@ -18,7 +18,7 @@
 
 @media (max-width:400px)
 {
-    #photo_compte
+    .photo_compte
     {
         width:40%;
         height:40%;

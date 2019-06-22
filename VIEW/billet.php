@@ -52,7 +52,7 @@
                     <em><?php echo 'Le '.$com->getDate(); ?></em>
                     <div class="alert">
 
-                        <img src="VIEW/images/avatar_<?php echo $com->getIdMembre(); ?>" class="img-thumbnail" id="photo_compte" alt="Pas de photos" />
+                        <img src="VIEW/images/avatar_<?php echo $com->getIdMembre(); ?>" class="img-thumbnail photo_compte" alt="Pas de photos" />
 
                         <p><?php echo nl2br(htmlspecialchars($com->getContenu())); ?></p>
 
@@ -79,7 +79,7 @@
             <div class="form-group">
                 <label for="postCommentaire"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']).' le '.date('d-m-Y') ?></label>
 
-                    <textarea id="postCommentaire" class="form-control" rows="" name="contenu"></textarea>
+                    <textarea id="postCommentaire" class="form-control" name="contenu"></textarea>
                     <input type="hidden" name="id_billet" value="<?php echo $Billet->getId();?>" />
                     <input type="hidden" name="id_membre" value="<?php echo $_SESSION['id'];?>" />
             </div>
