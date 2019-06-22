@@ -1,5 +1,5 @@
 <div class="container">
-<main role="main">
+
 
     <div class="col-12">
         <?php if($message) :?>
@@ -96,4 +96,3 @@
 
 
 
-</main>

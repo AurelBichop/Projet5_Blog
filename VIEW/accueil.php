@@ -1,6 +1,6 @@
 <div class="container">
 
-<main role="main">
+
 
         <?php if($message) :?>
             <div class="alert alert-success"><?php echo $message; ?></div>
@@ -30,7 +30,7 @@
 
 
 
-        <!-- Example row of columns -->
+
         <div class="row">
 
             <?php
@@ -55,4 +55,4 @@
 
     </div> <!-- /container -->
 
-</main>
+

@@ -7,7 +7,6 @@ require_once 'tools/Utils.php';
 require_once 'tools/Autoloader.php';
 
 
-
 /**
  * Chargement de l'autoloader
  */

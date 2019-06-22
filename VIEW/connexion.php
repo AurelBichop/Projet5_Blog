@@ -8,7 +8,7 @@
     <form action="./?action=newconnection" method="post">
         <div class="form-group">
             <label>Email</label>*
-            <input type="texte" id="nom" name="login" value="" class="form-control">
+            <input type="text" id="nom" name="login" value="" class="form-control">
         </div>
         <div class="form-group">
             <label>Mot de passe</label>*
@@ -16,7 +16,7 @@
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="connexionAutomatique" name="connexionAutomatique">
-            <label class="form-check-label" for="exampleCheck1">Connexion Automatique</label>
+            <label class="form-check-label" for="connexionAutomatique">Connexion Automatique</label>
         </div>
 
         <br />
