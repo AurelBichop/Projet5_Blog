@@ -15,12 +15,27 @@ class ManagerCommentaire extends AbstractManager
      * @param int $valid
      * @return array
      */
-    public function getCommentaire($idBillet, int $valid = 0)
+    public function getCommentaire($idBillet = null, int $valid = 0)
     {
 
         $objetCommentaire = [];
 
-        $sql = "SELECT C.*, M.nom, M.prenom 
+        $sql =null;
+
+        if($idBillet == null){
+            $sql = "SELECT C.*, M.nom, M.prenom 
+                FROM commentaire AS C
+                INNER JOIN membre AS M 
+                ON C.id_membre = M.id
+                WHERE C.validation=:validation
+                ORDER BY C.id";
+
+            $billet = [
+                'validation' => $valid
+            ];
+
+        }else{
+            $sql = "SELECT C.*, M.nom, M.prenom 
                 FROM commentaire AS C
                 INNER JOIN membre AS M 
                 ON C.id_membre = M.id
@@ -28,10 +43,14 @@ class ManagerCommentaire extends AbstractManager
                 AND C.validation=:validation
                 ORDER BY C.id";
 
-        $billet = [
-            'id' => $idBillet,
-            'validation' => $valid
-        ];
+            $billet = [
+                'id' => $idBillet,
+                'validation' => $valid
+            ];
+        }
+
+
+
 
         $reponse = $this->executerRequete($sql,$billet);
 

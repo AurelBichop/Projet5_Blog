@@ -168,10 +168,10 @@ class ControleurBilletAdmin extends ControleurBillet
         }
 
         $managerCommentaire = new ManagerCommentaire();
-        $listCom = $managerCommentaire->getCommentaire($idBillet);
+        $listCom = $managerCommentaire->getCommentaire($idBillet,1);
 
         if(!$listCom){
-            $message = 'Aucun commentaire à valider pour ce billet';
+            $message = 'Aucun commentaires à administrer pour ce billet';
         }
 
         //vue de l'admin des commentaires

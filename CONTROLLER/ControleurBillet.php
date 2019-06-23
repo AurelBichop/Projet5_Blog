@@ -50,21 +50,34 @@ class ControleurBillet
      * Affichage de la liste de tous les billets paginé
      *
      * @param null $message // Variable pour l'affiche de message dans la vue
-     *
+     * @throws BilletException
      */
-
     public function afficheBilletPagination($message = null){
 
         $page = 'listeBillets';
 
         $nombreBillets = 3;
 
+        $listeCommentaires = null;
+
         $managerBillet = new ManagerBillet();
 
         //si la methode est appelé dans le controlleur de l'admin
+
         if(get_called_class()=='ControleurBilletAdmin'){
             $nombreBillets= 5;
             $page= 'admin/listeBilletsAdmin';
+
+
+            $managerCommentaire = new ManagerCommentaire();
+            $listeCommentaires = $managerCommentaire->getCommentaire();
+
+
+            if(!$listeCommentaires){
+                $message = 'Aucun commentaires à valider';
+            }
+
+
         }
         //:::::::::::::::::::::::::::::::::
 
@@ -77,7 +90,8 @@ class ControleurBillet
         $vue->generer(array(
             'listeBillets' => $allBillets,
             'pages'=>$nbDePage,
-            'message'=>$message
+            'message'=>$message,
+            'listeCommentaires'=>$listeCommentaires
         ));
 
     }

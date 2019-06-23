@@ -4,8 +4,7 @@
         <div class="alert alert-success"><?php echo $message; ?></div>
     <?php endif;?>
 
-<h1>Administrer les commentaires</h1>
-
+<h1>Administrer les commentaires du billet <?php echo $listeCommentaires[0]->getIdbillet(); ?></h1>
 
 <table class="table">
 
@@ -23,7 +22,6 @@
             <td><?php echo $oneCommentaire->getId(); ?></td>
             <td><?php echo htmlspecialchars($oneCommentaire->getContenu()); ?></td>
             <td>
-                <a class="btn btn-success" href="?action=admin.commentaire.update&id=<?php echo $oneCommentaire->getIdbillet();?>&id_commentaire=<?= $oneCommentaire->getId();?>">Valider</a>
 
                 <form action="?action=admin.commentaire.delete&id=<?php echo $oneCommentaire->getIdbillet();?>" method="post" style="display:inline">
 
