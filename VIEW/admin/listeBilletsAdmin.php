@@ -10,7 +10,7 @@
         <thead>
         <tr>
             <td><strong>ID</strong></td>
-            <td><strong>Titre</strong></td>
+            <td><strong>Message</strong></td>
             <td><strong>Actions</strong></td>
         </tr>
         </thead>

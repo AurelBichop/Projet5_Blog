@@ -132,6 +132,7 @@ class ControleurContact
 
     /**
      * Pour afficher le message dans une div avec une couleur
+     * fonctionne avec Bootstrap 4
      *
      * @param string $texte
      * @param string $couleur
