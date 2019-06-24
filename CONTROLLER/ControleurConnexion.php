@@ -64,17 +64,17 @@ class ControleurConnexion
         $managerMembre = new ManagerMembre();
 
         //vérifie si le membre existe
-        if ($OneMembre = $managerMembre->getOneMembre($dataLogin)){
+        if ($oneMembre = $managerMembre->getOneMembre($dataLogin)){
 
             //vérifie le mot de passe du membre
-            if ($this->verifOneMembre($OneMembre, $dataPass)){
+            if ($this->verifOneMembre($oneMembre, $dataPass)){
 
                 $_SESSION['connecte'] = 1;
-                $_SESSION['id'] = $OneMembre->getId();
-                $_SESSION['administrateur'] = $OneMembre->getIsadministrateur();
-                $_SESSION['nom'] = $OneMembre->getNom();
-                $_SESSION['prenom'] = $OneMembre->getPrenom();
-                $_SESSION['email'] = $OneMembre->getCourriel();
+                $_SESSION['id'] = $oneMembre->getId();
+                $_SESSION['administrateur'] = $oneMembre->getIsadministrateur();
+                $_SESSION['nom'] = $oneMembre->getNom();
+                $_SESSION['prenom'] = $oneMembre->getPrenom();
+                $_SESSION['email'] = $oneMembre->getCourriel();
 
                 // Renvoie sur la page d'accueil
                 $controlleurBillet = new ControleurBillet();

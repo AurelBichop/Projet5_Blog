@@ -25,7 +25,7 @@
 
                     <form action="?action=admin.commentaire.delete&id=<?php echo $oneCommentaire->getIdbillet();?>" method="post" style="display:inline">
 
-                        <input type="hidden" name="id_commentaire" value="<?= $oneCommentaire->getId(); ?>">
+                        <input type="hidden" name="id_commentaire" value="<?php echo $oneCommentaire->getId(); ?>">
 
                         <button type="submit" class="btn btn-danger" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</button>
                     </form>

@@ -41,6 +41,9 @@ class ControleurContact
         if(!empty($errors)){
 
             $message = implode('<br />',$errors);
+
+            $message = $this->affMessage($message,'rouge');
+
             return $this->affichePageContact($message);
 
         }
@@ -59,7 +62,7 @@ class ControleurContact
 
          mail('aurelien.bichotte@aurelien-bichotte.fr','Formulaire de contact du blog par '.$_POST['name'],$message,$headers);
 
-         $message = 'mail envoyé';
+         $message =  $this->affMessage('mail envoyé','vert');
 
         return $this->affichePageContact($message);
 
@@ -124,5 +127,27 @@ class ControleurContact
         }
 
         return $retour;
+    }
+
+
+    /**
+     * Pour afficher le message dans une div avec une couleur
+     *
+     * @param string $texte
+     * @param string $couleur
+     * @return string|null
+     */
+    private function affMessage(string $texte,string $couleur){
+
+        $retour = null;
+
+        if ($couleur === 'vert'){
+            $retour = "<div class=\"alert alert-success\">$texte</div>";
+        }elseif($couleur = 'rouge'){
+            $retour = "<div class=\"alert alert-danger\">$texte</div>";
+        }
+
+        return $retour;
+
     }
 }

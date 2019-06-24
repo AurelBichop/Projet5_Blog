@@ -1,7 +1,7 @@
 <div class="container">
 
     <?php if($message) :?>
-        <div class="alert alert-success"><?php echo $message; ?></div>
+        <?php echo $message; ?>
     <?php endif;?>
 
 <section class="jumbotron text-center">
