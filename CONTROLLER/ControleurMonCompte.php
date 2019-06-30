@@ -43,7 +43,7 @@ class ControleurMonCompte
                 $membreUpdate = $this->ObjetMembre($data);
 
                 if($_FILES['avatar']['name'] != null){
-                    $retour = $this->uploadImgProfile('avatar','VIEW/images/avatar_'.$membreUpdate->getId(),1048576,array('png','gif','jpg','jpeg','JPG'));
+                    $retour = $this->uploadImgProfile('avatar','VIEW/images/avatar_'.$membreUpdate->getId().'.png',1048576,array('png','gif','jpg','jpeg','JPG'));
 
                     if(!$retour){
                         $message = 'Image invalide (taille trop grande ou format incorrect)';

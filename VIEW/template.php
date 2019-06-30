@@ -76,25 +76,28 @@
 
 <footer class="container">
     <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-            | <a href="./?action=accueil">Accueil</a> |
-            <a href="./?action=listebillet">Les Billets</a> |
+        <div class="col-auto">
+            <p class="text-center">
+                | <a href="./?action=accueil">Accueil</a> |
+                <a href="./?action=listebillet">Les Billets</a> |
 
-            <?php if (!isset($_SESSION['connecte'])) : ?>
-                <a href="./?action=inscription">S'incrire</a> |
-                <a href="./?action=connexion">Se Connecter</a> |
-            <?php endif; ?>
+                <?php if (!isset($_SESSION['connecte'])) : ?>
+                    <a href="./?action=inscription">S'incrire</a> |
+                    <a href="./?action=connexion">Se Connecter</a> |
+                <?php endif; ?>
 
-            <a href="./?action=contact">Contact</a> |
+                <a href="./?action=contact">Contact</a> |
 
-            <?php if (isset($_SESSION['connecte'])) : ?>
-                <a href="./?action=moncompte">Mon Compte</a> |
-                <a href="./?action=deconnexion">Se deconnecter</a> |
-            <?php endif; ?>
+                <?php if (isset($_SESSION['connecte'])) : ?>
+                    <a href="./?action=moncompte">Mon Compte</a> |
+                    <a href="./?action=deconnexion">Déconnection</a> |
+                <?php endif; ?>
 
-            <?php if (isset($_SESSION['administrateur']) && ($_SESSION['administrateur']==1)): ?>
-                <a href="./?action=admin.billet">Administrer</a>
-            <?php endif; ?>
+                <?php if (isset($_SESSION['administrateur']) && ($_SESSION['administrateur']==1)): ?>
+                    <a href="./?action=admin.billet">Administrer</a>
+                <?php endif; ?>
+            </p>
+
 
         </div>
     </div>

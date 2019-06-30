@@ -11,12 +11,17 @@
         <div class="row">
             <div class="col-3">
                 <div class="card">
-                    <img src="VIEW/images/avatar_<?php echo $membre->getID(); ?>" class="img-thumbnail" alt="Photo de Profile">
+                    <img src="VIEW/images/avatar_<?php echo $membre->getID(); ?>.png" class="img-thumbnail" alt="Photo de Profile">
 
                 </div>
 
             </div>
             <div class="form-group">
+                <p>
+                    Formats accepté pour les images sont: <strong>png, gif, jpg, jpeg, JPG</strong><br />
+                    Taille Maximum :<strong>1M</strong>
+                </p>
+
                 <input type="file" name="avatar" id="avatar" class="form-control-file border" />
             </div>
 
