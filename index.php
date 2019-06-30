@@ -55,7 +55,7 @@ $actionGet = 'accueil';
 
 //Verifie l'existance de $_GET['action']
 
-if (!empty($_GET['action'])){
+if (!empty($_GET['action']) && array_key_exists($_GET['action'],$listAction)){
     $actionGet = $_GET['action'];
 }
 

@@ -1,10 +1,21 @@
 
+.titre_accueil{
+    margin-top:5%;
+    margin-bottom:1%;
+}
+
+
 .photo_compte
 {
     width:10%;
     height:10%;
 }
 
+.photo_cv
+{
+    width:45%;
+    height:90%;
+}
 
 @media (max-width:900px)
 {
