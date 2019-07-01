@@ -176,7 +176,6 @@ class ControleurBilletAdmin extends ControleurBillet
         }
 
         //vue de l'admin des commentaires
-
         $vue = new Vue('admin/listeCommentaireAdmin', 'Admin Commentaire');
 
         $vue->generer(array('message'=>$message,'listeCommentaires'=>$listCom));

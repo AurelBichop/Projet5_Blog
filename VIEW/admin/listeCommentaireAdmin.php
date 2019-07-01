@@ -4,7 +4,7 @@
         <div class="alert alert-success"><?php echo $message; ?></div>
     <?php endif;?>
 
-<h1>Administrer les commentaires du billet <?php echo $_GET['id']; ?></h1>
+<h1>Administrer les commentaires du billet</h1>
 
 <table class="table">
 
