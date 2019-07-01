@@ -46,7 +46,7 @@ class ControleurMonCompte
                     $retour = $this->uploadImgProfile('avatar','VIEW/images/avatar_'.$membreUpdate->getId().'.png',1048576,array('png','gif','jpg','jpeg','JPG'));
 
                     if(!$retour){
-                        $message = 'Image invalide (taille trop grande ou format incorrect)';
+                        $message = $this->affMessage('Image invalide (taille trop grande ou format incorrect)','rouge');
                         return $this->afficheMonCompte($message);
                     }
                 }
@@ -55,7 +55,7 @@ class ControleurMonCompte
 
                 if(!$this->verifEmail($membreUpdate->getCourriel())){
 
-                    $message = 'Merci de bien remplir le champ courriel';
+                    $message = $this->affMessage('Merci de bien remplir le champ courriel','rouge');
                     return $this->afficheMonCompte($message);
                 }
 
@@ -66,9 +66,11 @@ class ControleurMonCompte
 
                 $managerMembre->updateMembre($membreUpdate);
 
-                $message = 'Compte modifié';
+                $message = $this->affMessage('Compte modifié','vert');
             }else{
-                $message = CHAMP_VIDE;
+
+                $message = $this->affMessage(CHAMP_VIDE,'rouge');
+
             }
         }
 
@@ -159,6 +161,26 @@ public function uploadImgProfile($index,$destination,$maxsize = false,$extension
 
 
 
+    /**
+     * Pour afficher le message dans une div avec une couleur
+     * fonctionne avec Bootstrap 4
+     *
+     * @param string $texte
+     * @param string $couleur
+     * @return string|null
+     */
+    private function affMessage(string $texte,string $couleur){
 
+        $retour = null;
+
+        if ($couleur === 'vert'){
+            $retour = "<div class=\"alert alert-success\">$texte</div>";
+        }elseif($couleur = 'rouge'){
+            $retour = "<div class=\"alert alert-danger\">$texte</div>";
+        }
+
+        return $retour;
+
+    }
 
 }

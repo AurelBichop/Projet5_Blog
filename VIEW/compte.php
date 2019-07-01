@@ -1,9 +1,10 @@
 <div class="container">
 
-    <?php if($message) :?>
-        <div class="alert alert-success"><?php echo $message; ?></div>
+    <?php if($message) :
 
-    <?php endif;?>
+        echo $message;
+
+    endif;?>
 
     <h1>Mes informations</h1>
     <form method="post" action="./?action=moncompte.update" enctype="multipart/form-data">
