@@ -170,7 +170,7 @@ class ControleurBilletAdmin extends ControleurBillet
         $managerCommentaire = new ManagerCommentaire();
         $listCom = $managerCommentaire->getCommentaire($idBillet,1);
 
-        
+        //si aucun commentaires n'existe
         if(!$listCom){
             $message = 'Aucun commentaires à administrer pour ce billet';
         }
