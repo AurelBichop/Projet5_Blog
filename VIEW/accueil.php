@@ -18,6 +18,11 @@
                 </em>
             </p>
 
+            <p>
+                <a href="mailto:linux.aurelien@gmail.com">linux.aurelien@gmail.com</a>
+                <a href="https://www.linkedin.com/in/aur%C3%A9lien-b-3b392716b/" target="_blank"><img src="VIEW/images/linkedIn.png" alt="lien linkedin"></a>
+            </p>
+
         </div>
 
         <div class="col-sm-4">
