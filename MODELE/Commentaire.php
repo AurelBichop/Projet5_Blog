@@ -18,6 +18,7 @@ class Commentaire
 
     private $_contenu;
     private $_date_heure;
+    private $_validation;
 
     /**
      * Billet constructor.
@@ -85,6 +86,14 @@ class Commentaire
         $this->_date_heure = $date;
     }
 
+    /**
+     * @param mixed $validation
+     */
+    public function setValidation($validation)
+    {
+        $this->_validation = $validation;
+    }
+
 
     /**
      * @return mixed
@@ -148,6 +157,13 @@ class Commentaire
         return $date->format('d-m-Y à H:i');
     }
 
+    /**
+     * @return mixed
+     */
+    public function getValidation()
+    {
+        return $this->_validation;
+    }
 
 
 
