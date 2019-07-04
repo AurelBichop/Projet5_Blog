@@ -6,7 +6,7 @@
     <?php foreach ($listeBillets as $oneBillet): ?>
     <div class="jumbotron">
 
-        <h1 class="display-3"><strong><?php echo htmlspecialchars($oneBillet->getChapeau()); ?></strong></h1>
+        <h1 class="display-5"><strong><?php echo htmlspecialchars($oneBillet->getChapeau()); ?></strong></h1>
             <p>
                 <em>Date :
 

@@ -10,7 +10,7 @@
 
     <div class="jumbotron">
 
-            <h1 class="display-3"><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h1>
+            <h4><strong><?php echo htmlspecialchars($Billet->getChapeau()); ?></strong></h4>
             <p>
                 <em>Date :
 

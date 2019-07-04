@@ -157,18 +157,20 @@ class ControleurBillet
         if(!empty($data)){
 
             if($this->verifPost($data['contenu'])){
-                $message = CHAMP_VIDE;
+                $message = 'Merci de renseigner le champ commentaire';
             }else{
                 $objetCommentaire = $this->addObjetCommentaire($data);
 
                 $managerCom = new ManagerCommentaire();
 
                 $managerCom->addComBDD($objetCommentaire);
+
+                $message = 'Commentaire envoyé, en attente de validation par le modérateur';
             }
 
         }
 
-        $message = 'Commentaire envoyé, en attente de validation par le modérateur';
+
 
         if (!empty($_GET['num'])) {
             $this->afficheBilletSelect($_GET['num'],$message);
