@@ -26,9 +26,9 @@ Class Vue
      * @param $donneeMethodeGenerer
      * @throws Exception
      */
-    public function generer($donneeMethodeGenerer) {
+    public function generer($donnee) {
         // Génération de la partie spécifique de la vue
-        $contenu = $this->genererFichier($this->fichier, $donneeMethodeGenerer);
+        $contenu = $this->genererFichier($this->fichier, $donnee);
         // Génération du gabarit commun utilisant la partie spécifique
         $vue = $this->genererFichier('VIEW/template.php',
             array('titre' => $this->titre, 'contenu' => $contenu));
@@ -44,11 +44,11 @@ Class Vue
      * @return false|string
      * @throws Exception
      */
-    private function genererFichier($fichier, $donneMethodeGenererFichier) {
+    private function genererFichier($fichier, $data) {
         if (file_exists($fichier)) {
             // Rend les éléments du tableau $donnees accessibles dans la vue
             //print_r($donnees);
-            extract($donneMethodeGenererFichier);
+            extract($data);
             // Démarrage de la temporisation de sortie
             ob_start();
             // Inclut le fichier vue
