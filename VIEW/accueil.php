@@ -39,7 +39,7 @@
     <div class="row ">
         <div class="col-sm">
             <p>
-                <a href="MODELE/cv-bichotte-aurelien.pdf" class="btn btn-primary">Télécharger mon cv </a>
+                <a href="MODELE/cv-bichotte-aurelien.pdf" target="_blank" class="btn btn-primary">Télécharger mon cv </a>
                 <a href="./?action=contact" class="btn btn-primary">Me contacter</a>
             </p>
         </div>
