@@ -74,7 +74,7 @@
 
     <?php echo $contenu ?>
 
-<footer class="container">
+<footer class="container menu_bas">
     <div class="row justify-content-md-center">
         <div class="col-auto">
             <p class="text-center">
