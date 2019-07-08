@@ -19,7 +19,7 @@ Au premier démarrage:
 S'incrire au travers du blog.
 Pour s'attribuer les droits d'administrateur, il faut modifier le contenu du champ is_administrateur (dans la table membre) en le mettant à 1.
 
-Vous pourrez en suite créer votre premier article.
+Vous pourrez ensuite créer votre premier article.
 
 Technologie utilisé :
 Base de donnée : MYSQL ou MariaDB, langage PHP7 et Recaptcha V2 (https://www.google.com/recaptcha/intro/v3.html).
