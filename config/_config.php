@@ -16,6 +16,8 @@ define('CHAMP_VIDE','Merci de Bien renseigner tous les Champs');
 
 /**
  * Clef secrete pour les captchas Google
+ * exemple de clef serveur ou client: 6Ls-jrbfbYGGDjne_fgdhndsefgrRFQGQRrgGRS
+ *
  */
 
 define('CLEF_CLIENT','Votre clef client');
