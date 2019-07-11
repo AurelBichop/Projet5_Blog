@@ -79,7 +79,7 @@ class ControleurInscription
 
         // Renvoie sur la page d'accueil
         $controlleurBillet = new ControleurConnexion();
-        $message = 'Inscription réussi, bienvenue sur notre blog, merci de vous connecter';
+        $message = 'Inscription réussie, bienvenue sur notre blog, merci de vous connecter';
         return $controlleurBillet->affichePageConnexion($message);
 
     }
