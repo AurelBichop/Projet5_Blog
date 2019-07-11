@@ -65,7 +65,7 @@
 
         <?php if(!isset($_SESSION['connecte'])): ?>
             <div>
-                <h5>Pour Laisser un commentaire merci de vous inscrire ou connecter</h5>
+                <h5>Pour laisser un commentaire merci de vous inscrire ou connecter</h5>
                 <a href="./?action=connexion"><button class="btn btn-primary">Connexion</button></a>
 
                 <a href="./?action=inscription"><button class="btn btn-primary">Inscription</button></a>

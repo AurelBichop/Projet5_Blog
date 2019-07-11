@@ -23,7 +23,7 @@ Class Vue
     /**
      * Génère et affiche la vue
      *
-     * @param $donneeMethodeGenerer
+     * @param $donnee
      * @throws Exception
      */
     public function generer($donnee) {
@@ -39,8 +39,9 @@ Class Vue
 
     /**
      * Génère un fichier vue et renvoie le résultat produit
+     *
      * @param $fichier
-     * @param $donneMethodeGenererFichier
+     * @param $data
      * @return false|string
      * @throws Exception
      */
